@@ -55,23 +55,69 @@ const chartOption = {
   xAxis: [
     {
       type: 'category',
+      name: 'Jahr',
+      nameLocation:"center",
+      nameGap: 20,
       data: [2022],
-      gridIndex: 0 
+      gridIndex: 0,
+      axisLine: {
+        show: true,
+        symbol: "none",
+        lineStyle: {
+          type: 'solid',
+          width: 2,
+          //color: "#00f",
+          // ...
+        }
+      }
     },
     {
       type: 'category',
+      name: 'Jahr',
+      nameLocation:"center",
+      nameGap: 20,
       data: [2022,2025,2030,2035,2040],
-      gridIndex: 1 
+      gridIndex: 1 ,
+      axisLine: {
+        symbol: ["none",'arrow'],
+      }
     }
   ],
   yAxis: [
     {
       type: 'value',
       gridIndex: 0,
+      name: 'Emission',
+      min: 0,
+      max: 20,
+      position: 'left',
+      axisLabel: {
+        formatter: '{value} t CO2'
+      },
+      axisLine: {
+        show: true,
+        symbol: ["none",'arrow'],
+        lineStyle: {
+          type: 'solid',
+          width: 2,
+          //color: "#00f",
+          // ...
+        }
+      }
     },
     {
       type: 'value',
+      min: 0,
+      max: 20,
       gridIndex: 1,
+      show: true,
+      axisLine: {
+        show: false,
+      },
+      axisLabel: {
+        show: false,
+        formatter: '{value} t CO2'
+      },
     }
   ],
   series: [
