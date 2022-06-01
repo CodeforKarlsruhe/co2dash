@@ -55,10 +55,10 @@ const chartOption = {
   xAxis: [
     {
       type: 'category',
-      name: 'Jahr',
+      name: 'Bilanztyp 2022',
       nameLocation:"center",
       nameGap: 20,
-      data: [2022],
+      data: ["UBA","NOW","KA"],
       gridIndex: 0,
       axisLine: {
         show: true,
@@ -124,14 +124,28 @@ const chartOption = {
     {
       name: 'Sector1',
       type: 'bar',
+      //barWidth: 100,
+      stack: 'total',
+      data: [5,4,3.9],
+    },
+    {
+      name: 'Sector2',
+      type: 'bar',
+      stack: 'total',
+      data: [3.2,4.7,2.8]
+    },
+    {
+      name: 'Sector3',
+      type: 'bar',
+      stack: 'total',
+      data: [3.1,3.9,5.3],
       label: {
         normal: {
           // Options: 'left', 'right', 'top', 'bottom', 'inside', 'insideTop', 'insideLeft', 'insideRight', 'insideBottom', 'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
           position: 'top',
           distance: 10,
-
           show: true,
-          formatter: ['UBA'].join('\n'),
+          formatter: ['{b}'].join('\n'),
           backgroundColor: '#eee',
           borderColor: '#555',
           borderWidth: 2,
@@ -141,158 +155,6 @@ const chartOption = {
           color: '#000'
         },
       },
-      //barWidth: 100,
-      stack: 'UBA',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [5]
-    },
-    {
-      name: 'Sector2',
-      type: 'bar',
-      stack: 'UBA',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [3.2]
-    },
-    {
-      name: 'Sector3',
-      type: 'bar',
-      stack: 'UBA',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [3.1]
-    },
-
-    {
-      name: 'Sector1',
-      type: 'bar',
-      label: {
-        normal: {
-          // Options: 'left', 'right', 'top', 'bottom', 'inside', 'insideTop', 'insideLeft', 'insideRight', 'insideBottom', 'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
-          position: 'top',
-          distance: 10,
-
-          show: true,
-          formatter: ['NOW'].join('\n'),
-          backgroundColor: '#eee',
-          borderColor: '#555',
-          borderWidth: 2,
-          borderRadius: 5,
-          padding: 10,
-          fontSize: 18,
-          color: '#000'
-        },
-      },
-      //barWidth: 100,
-      stack: 'Local',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [4.4]
-    },
-    {
-      name: 'Sector2',
-      type: 'bar',
-      stack: 'Local',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [5]
-    },
-    {
-      name: 'Sector3',
-      type: 'bar',
-      stack: 'Local',
-      emphasis: {
-        focus: 'series'
-      },
-      data: [2]
-    },
-    {
-      name: 'Sector1',
-      //color: "#00ff00",
-      //label: "KA",
-      label: {
-        normal: {
-          // Options: 'left', 'right', 'top', 'bottom', 'inside', 'insideTop', 'insideLeft', 'insideRight', 'insideBottom', 'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
-          position: 'top',
-          distance: 10,
-
-          show: true,
-          formatter: ['KA'].join('\n'),
-          backgroundColor: '#eee',
-          borderColor: '#555',
-          borderWidth: 2,
-          borderRadius: 5,
-          padding: 10,
-          fontSize: 18,
-          color: '#000'
-        },
-      },
-      type: 'bar',
-      //barWidth: 100,
-      stack: 'KA',
-      data: [4]
-    },
-    {
-      name: 'Sector2',
-      //color: "#ff00ff",
-      type: 'bar',
-      stack: 'KA',
-      data: [5]
-    },
-    {
-      name: 'Sector3',
-      type: 'bar',
-      stack: 'KA',
-      data: [3],
-      markpoint: {
-        symbolSize: 1,
-        symbolOffset: [0, '50%'],
-        label: {
-          show:true,
-          position: 'right',
-          distance: 20,
-        },
-        data: [
-          {
-              name: 'maximum',
-              type: 'max'
-          },
-      ] 
-      },
-      /*
-      markLine: {
-        lineStyle: {
-          type: 'dashed',
-          width: 3,
-        },
-        data: [
-          [{
-            // Mark line with a fixed X position in starting point. This is used to generate an arrow pointing to maximum line.
-              name: "KA Klimaschutz",
-              lineStyle: {
-                type: 'dashed',
-                width: 7,
-                color: "#00ff00",
-              },
-              label: {
-                show:true,
-                position: "middle"
-              },
-              yAxis: 12,
-              xAxis: '2022'
-          }, {
-              yAxis: 0, //'min',
-              xAxis: "2040", //"90%"
-          }],
-        ]
-      },
-    */
     },
 
     // 
