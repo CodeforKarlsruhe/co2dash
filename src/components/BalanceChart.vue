@@ -122,11 +122,74 @@ const chartOption = {
   ],
   series: [
     {
+      name: 'Summe Sektoren',
+      type: 'bar',
+      barWidth: 1,
+      data: [11.3,12.6,12],
+      label: {
+        show:false,
+      },
+      markLine: {
+        lineStyle: {
+          type: 'dashed',
+          width: 3,
+        },
+        symbol:["none","none"],
+        data: [
+          {
+            lineStyle: {
+              type: 'solid',
+              color: "#f00",
+              width: 3,
+            },
+            label: {
+              show:true,
+              formatter: "1,75C, 67% Wahrscheinlichkeit",
+              fontSize: 16,
+              position: "middle"
+            },
+            yAxis: 4.1,
+          },
+          {
+            lineStyle: {
+              type: 'solid',
+              color: "#0f0",
+              width: 3,
+            },
+            label: {
+              show:true,
+              fontSize: 16,
+              formatter: "1,5C, 50%",
+              position: "middle"
+            },
+            yAxis: 2.6,
+          },
+          {
+            lineStyle: {
+              type: 'solid',
+              color: "#00f",
+              width: 3,
+            },
+            label: {
+              show:true,
+              formatter: "Klimaneutral",
+              fontSize: 16,
+              position: "middle"
+            },
+            yAxis: .5,
+          },
+        ]
+      }
+    },
+    {
       name: 'Sector1',
       type: 'bar',
       //barWidth: 100,
       stack: 'total',
       data: [5,4,3.9],
+      emphasis: {
+         focus: "none", //'series',
+      }
     },
     {
       name: 'Sector2',
@@ -159,7 +222,7 @@ const chartOption = {
 
     // 
     {
-      name: 'Summe',
+      name: 'Summe Sektoren',
       type: 'bar',
       xAxisIndex: 1, yAxisIndex: 1 ,
       /*
@@ -239,6 +302,7 @@ const chartOption = {
               yAxis: 0, //'min',
               xAxis: "2040", //"90%"
           }],
+          /*
           {
             name: 'A horizontal line with Y valued 10',
             lineStyle: {
@@ -259,6 +323,7 @@ const chartOption = {
             },
             type: 'average'
           },
+          */
         ]
       },
 
