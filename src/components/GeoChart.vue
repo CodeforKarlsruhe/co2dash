@@ -38,9 +38,8 @@ export default {
         return {
             option : {
                 title: {
-                text: 'Karlsruhe (Stadtteile)',
-                //subtext: 'Data from www.census.gov',
-                //sublink: 'http://www.census.gov/popest/data/datasets.html',
+                show: false,
+                text: 'nach Stadtteilen',
                 left: 'center'
                 },
                 tooltip: {

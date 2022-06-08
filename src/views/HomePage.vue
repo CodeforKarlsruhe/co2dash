@@ -42,7 +42,7 @@
         <ion-col size="4" >
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Geo1</ion-card-title>
+              <ion-card-title>Teilnehmer:Innen</ion-card-title>
               </ion-card-header>
               <ion-card-content class="geochart">
                 <ParticipantChart></ParticipantChart>
@@ -53,7 +53,7 @@
         <ion-col size="4" >
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Geo2</ion-card-title>
+              <ion-card-title>Einsparungen</ion-card-title>
               </ion-card-header>
               <ion-card-content class="geochart">
                 <GeoChart></GeoChart>

@@ -38,17 +38,25 @@ export default {
         return {
             option : {
                 title: {
-                text: 'Teilnehmer nach Stadtteilen',
-                left: 'center'
+                show: false,
+                text: 'nach Stadtteilen',
+                left: 'center',
                 },
                 grid: {
                     left: '3%',
-                    top: '15%',
+                    top: '20%',
                     bottom: '3%',
                     /*
                     right: '4%',
                     */
                     containLabel: true
+                },
+                legend: {
+                    /*
+                    orient: 'vertical',
+                    right: 10,
+                    top: 'center'
+                    */
                 },
                 tooltip: {
                     trigger: 'axis',
