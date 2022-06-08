@@ -30,36 +30,21 @@ const chartOption = {
     }
   },
   legend: {},
-  /*
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true
-  },
-  */
-  grid: [
+  grid:
     {
     left: '3%',
-    right: '65%',
-    bottom: '3%',
-    containLabel: true
-  },
-    {
-    left: '38%',
     right: '4%',
-    bottom: '3%',
+    top: '15%',
+    bottom: '5%',
     containLabel: true
   },
-  ],
-  xAxis: [
+  xAxis:
     {
       type: 'category',
       name: 'Bilanztyp 2022',
       nameLocation:"center",
       nameGap: 20,
       data: ["UBA","NOW","KA"],
-      gridIndex: 0,
       axisLine: {
         show: true,
         symbol: "none",
@@ -71,22 +56,9 @@ const chartOption = {
         }
       }
     },
-    {
-      type: 'category',
-      name: 'Jahr',
-      nameLocation:"center",
-      nameGap: 20,
-      data: [2022,2025,2030,2035,2040],
-      gridIndex: 1 ,
-      axisLine: {
-        symbol: ["none",'arrow'],
-      }
-    }
-  ],
-  yAxis: [
+  yAxis:
     {
       type: 'value',
-      gridIndex: 0,
       name: 'Emission',
       min: 0,
       max: 20,
@@ -105,21 +77,6 @@ const chartOption = {
         }
       }
     },
-    {
-      type: 'value',
-      min: 0,
-      max: 20,
-      gridIndex: 1,
-      show: true,
-      axisLine: {
-        show: false,
-      },
-      axisLabel: {
-        show: false,
-        formatter: '{value} t CO2'
-      },
-    }
-  ],
   series: [
     {
       name: 'Summe Sektoren',
@@ -220,115 +177,6 @@ const chartOption = {
       },
     },
 
-    // 
-    {
-      name: 'Summe Sektoren',
-      type: 'bar',
-      xAxisIndex: 1, yAxisIndex: 1 ,
-      /*
-      label: {
-        normal: {
-          // Options: 'left', 'right', 'top', 'bottom', 'inside', 'insideTop', 'insideLeft', 'insideRight', 'insideBottom', 'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
-          position: 'top',
-          distance: 10,
-          show: true,
-          formatter: ['Summe'].join('\n'),
-          backgroundColor: '#eee',
-          borderColor: '#555',
-          borderWidth: 2,
-          borderRadius: 5,
-          padding: 10,
-          fontSize: 18,
-          color: '#000'
-        },
-      },
-      */
-      //barWidth: 5,
-      data: [12,7,0,0,0],
-      markpoint: {
-        symbol: "pin",
-        symbolSize: 50,
-        //symbolOffset: [0, '50%'],
-        label: {
-          show:true,
-          position: 'right',
-          distance: 2,
-        },
-        data: [
-        {
-            name: 'fixed x position',
-            yAxis: 5,
-            x: '50%'
-          }, 
-        ] 
-      },
-      markLine: {
-        lineStyle: {
-          type: 'dashed',
-          width: 3,
-        },
-        data: [
-          [{
-            // Mark line with a fixed X position in starting point. This is used to generate an arrow pointing to maximum line.
-              name: "Paris 1.5 Grad Ziel",
-              lineStyle: {
-                type: 'dashed',
-                width: 7,
-              },
-              label: {
-                show:true,
-                position: "middle"
-              },
-              yAxis: 'max',
-              xAxis: '2022'
-          }, {
-              yAxis: 0, //'min',
-              xAxis: "2030", //"90%"
-          }],
-          [{
-            // Mark line with a fixed X position in starting point. This is used to generate an arrow pointing to maximum line.
-              name: "KA Klimaschutz",
-              lineStyle: {
-                type: 'dashed',
-                width: 7,
-              },
-              label: {
-                show:true,
-                position: "middle"
-              },
-              yAxis: 'max',
-              xAxis: '2022'
-          }, {
-              yAxis: 0, //'min',
-              xAxis: "2040", //"90%"
-          }],
-          /*
-          {
-            name: 'A horizontal line with Y valued 10',
-            lineStyle: {
-              type: 'solid',
-              width: 3,
-            },
-            label: {
-              show:true,
-              position: "middle"
-            },
-            yAxis: 10
-          },
-          {
-            name: 'average line',
-            label: {
-              show:true,
-              position: "end"
-            },
-            type: 'average'
-          },
-          */
-        ]
-      },
-
-    },
-
   ]
 };
 
@@ -368,9 +216,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .chart {
-    /*height:400px;*/
-    min-height:400px;
-    height:100%;
+    height:200px;
     max-width:100%;
     margin-left:auto;
     margin-right:auto;

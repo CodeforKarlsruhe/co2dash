@@ -152,11 +152,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .map {
-    height: 100%;
+    height:200px;
 }
 .chart {
     /*height:400px;*/
-    min-height:200px;
+    height:200px;
+    /*height:100%;*/
     width:100%;
     margin-left:auto;
     margin-right:auto;

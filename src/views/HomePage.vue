@@ -25,8 +25,8 @@
     <ion-grid>
       <ion-row class="toprow">
         <ion-col size="4" >
-          <ion-card>
-            <ion-card-header>
+          <ion-card class="heading">
+            <ion-card-header class="qr-header">
               <ion-card-title>Scannen Sie diesen Code</ion-card-title>
               </ion-card-header>
               <ion-card-content>
@@ -39,6 +39,22 @@
           </ion-card>
         </ion-col>
 
+        <ion-col size="8" >
+          <ion-card class="heading">
+            <ion-card-header>
+              <ion-card-title>CO2-Einsparen: Mein Beitrag für Karlsruhe</ion-card-title>
+              </ion-card-header>
+              <ion-card-content >
+                Ganz viel Beschreibung ...
+                <br>
+                ... noch mehr Text ..
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
         <ion-col size="4" >
           <ion-card>
             <ion-card-header>
@@ -49,6 +65,20 @@
               </ion-card-content>
           </ion-card>
         </ion-col>
+
+        <ion-col size="8" >
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>CO2 Bilanz</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="co2chart">
+                <BalanceChart></BalanceChart>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
 
         <ion-col size="4" >
           <ion-card>
@@ -61,21 +91,21 @@
           </ion-card>
         </ion-col>
 
-      </ion-row>
-
-
-      <ion-row>
-        <ion-col size="12" >
+        <ion-col size="8" >
           <ion-card>
             <ion-card-header>
-              <ion-card-title>CO2 Bilanz</ion-card-title>
+              <ion-card-title>Paris Limits</ion-card-title>
               </ion-card-header>
               <ion-card-content class="co2chart">
-                <BalanceChart></BalanceChart>
+                <ParisChart></ParisChart>
               </ion-card-content>
           </ion-card>
         </ion-col>
+
       </ion-row>
+
+
+
     </ion-grid>
     </ion-content>
   </ion-page>
@@ -90,6 +120,7 @@ import { IonContent, IonHeader, IonPage,
 import { defineComponent } from 'vue';
 
 import BalanceChart from '../components/BalanceChart.vue'
+import ParisChart from '../components/ParisChart.vue'
 import GeoChart from '../components/GeoChart.vue'
 import ParticipantChart from '../components/ParticipantChart.vue'
 
@@ -105,6 +136,7 @@ export default defineComponent({
     IonImg,
     IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
     BalanceChart,
+    ParisChart,
     GeoChart,
     ParticipantChart,
   }
@@ -117,8 +149,12 @@ export default defineComponent({
 
 
 ion-card-content ion-img::part(image) {
+  min-height: 100px;
+  max-height: 150px;
+  /*
   min-height: 150px;
   max-height: 200px;
+  */
 }
 
 
@@ -126,9 +162,6 @@ ion-card-title {
   text-align: center;
 }
 
-.co2chart {
-  min-height: 300px;
-}
 
 
 /* custom */
@@ -167,6 +200,12 @@ ion-card-title {
   margin-bottom: -.4rem;
 }
 
+.heading {
+    height:200px;
+}
 
+.qr-header {
+  padding-bottom: 0;
+}
 
 </style>

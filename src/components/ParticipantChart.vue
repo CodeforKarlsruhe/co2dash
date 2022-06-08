@@ -44,8 +44,8 @@ export default {
                 },
                 grid: {
                     left: '3%',
-                    top: '20%',
-                    bottom: '3%',
+                    top: '15%',
+                    bottom: '5%',
                     /*
                     right: '4%',
                     */
@@ -116,11 +116,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .map {
-    height: 100%;
+    height:200px;
 }
 .chart {
-    /*height:400px;*/
-    min-height:200px;
+    height:200px;
     width:100%;
     margin-left:auto;
     margin-right:auto;
