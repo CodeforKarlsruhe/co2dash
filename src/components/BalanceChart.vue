@@ -35,7 +35,7 @@ const chartOption = {
     left: '3%',
     right: '4%',
     top: '15%',
-    bottom: '5%',
+    bottom: '10%',
     containLabel: true
   },
   xAxis:
@@ -44,7 +44,7 @@ const chartOption = {
       name: 'Bilanztyp 2022',
       nameLocation:"center",
       nameGap: 20,
-      data: ["UBA","NOW","KA"],
+      data: ["NOW","KA"],
       axisLine: {
         show: true,
         symbol: "none",
@@ -82,7 +82,7 @@ const chartOption = {
       name: 'Summe Sektoren',
       type: 'bar',
       barWidth: 1,
-      data: [11.3,12.6,12],
+      data: [12.6,12],
       label: {
         show:false,
       },
@@ -102,8 +102,8 @@ const chartOption = {
             label: {
               show:true,
               formatter: "1,75C, 67% Wahrscheinlichkeit",
-              fontSize: 16,
-              position: "middle"
+              fontSize: 14,
+              position: "insideStartTop"
             },
             yAxis: 4.1,
           },
@@ -115,7 +115,7 @@ const chartOption = {
             },
             label: {
               show:true,
-              fontSize: 16,
+              fontSize: 14,
               formatter: "1,5C, 50%",
               position: "middle"
             },
@@ -130,8 +130,8 @@ const chartOption = {
             label: {
               show:true,
               formatter: "Klimaneutral",
-              fontSize: 16,
-              position: "middle"
+              fontSize: 14,
+              position: "insideEndTop"
             },
             yAxis: .5,
           },
@@ -143,7 +143,7 @@ const chartOption = {
       type: 'bar',
       //barWidth: 100,
       stack: 'total',
-      data: [5,4,3.9],
+      data: [4,3.9],
       emphasis: {
          focus: "none", //'series',
       }
@@ -152,14 +152,15 @@ const chartOption = {
       name: 'Sector2',
       type: 'bar',
       stack: 'total',
-      data: [3.2,4.7,2.8]
+      data: [4.7,2.8]
     },
     {
       name: 'Sector3',
       type: 'bar',
       stack: 'total',
-      data: [3.1,3.9,5.3],
+      data: [3.9,5.3],
       label: {
+      /*
         normal: {
           // Options: 'left', 'right', 'top', 'bottom', 'inside', 'insideTop', 'insideLeft', 'insideRight', 'insideBottom', 'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
           position: 'top',
@@ -174,6 +175,7 @@ const chartOption = {
           fontSize: 18,
           color: '#000'
         },
+        */
       },
     },
 

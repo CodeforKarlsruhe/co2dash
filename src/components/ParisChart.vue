@@ -31,7 +31,7 @@ const chartOption = {
     left: '3%',
     right: '4%',
     top: '15%',
-    bottom: '5%',
+    bottom: '10%',
     containLabel: true
   },
   xAxis: 
