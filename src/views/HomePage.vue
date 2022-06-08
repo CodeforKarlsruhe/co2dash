@@ -24,7 +24,7 @@
     <ion-content :fullscreen="true"  class="onepnt5">
     <ion-grid>
       <ion-row class="toprow">
-        <ion-col size="4" >
+        <ion-col size="12" size-sm="4">
           <ion-card class="heading">
             <ion-card-header class="qr-header">
               <ion-card-title>Scannen Sie diesen Code</ion-card-title>
@@ -39,7 +39,7 @@
           </ion-card>
         </ion-col>
 
-        <ion-col size="8" >
+        <ion-col size="12" size-sm="8">
           <ion-card class="heading">
             <ion-card-header>
               <ion-card-title>CO2-Einsparen: Mein Beitrag für Karlsruhe</ion-card-title>
@@ -55,7 +55,7 @@
       </ion-row>
 
       <ion-row>
-        <ion-col size="4" >
+        <ion-col size="12" size-sm="4">
           <ion-card>
             <ion-card-header>
               <ion-card-title>Teilnehmer:Innen</ion-card-title>
@@ -66,7 +66,7 @@
           </ion-card>
         </ion-col>
 
-        <ion-col size="8" >
+        <ion-col size="12" size-sm="8">
           <ion-card>
             <ion-card-header>
               <ion-card-title>CO2 Bilanz</ion-card-title>
@@ -80,7 +80,7 @@
 
       <ion-row>
 
-        <ion-col size="4" >
+        <ion-col size="12" size-sm="4">
           <ion-card>
             <ion-card-header>
               <ion-card-title>Einsparungen</ion-card-title>
@@ -91,7 +91,7 @@
           </ion-card>
         </ion-col>
 
-        <ion-col size="8" >
+        <ion-col size="12" size-sm="8">
           <ion-card>
             <ion-card-header>
               <ion-card-title>Paris Limits</ion-card-title>
