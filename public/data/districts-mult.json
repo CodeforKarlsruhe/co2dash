@@ -1,0 +1,137 @@
+[
+    {
+        "name": "Innenstadt-Ost",
+        "value": 7,
+        "mult": 45
+    },
+    {
+        "name": "Innenstadt-West",
+        "value": 71,
+        "mult": 38
+    },
+    {
+        "name": "S\u00fcdstadt",
+        "value": 19,
+        "mult": 19
+    },
+    {
+        "name": "S\u00fcdweststadt",
+        "value": 23,
+        "mult": 38
+    },
+    {
+        "name": "Weststadt",
+        "value": 47,
+        "mult": 25
+    },
+    {
+        "name": "Nordweststadt",
+        "value": 40,
+        "mult": 44
+    },
+    {
+        "name": "Oststadt",
+        "value": 1,
+        "mult": 9
+    },
+    {
+        "name": "M\u00fchlburg",
+        "value": 5,
+        "mult": 9
+    },
+    {
+        "name": "Daxlanden",
+        "value": 9,
+        "mult": 37
+    },
+    {
+        "name": "Knielingen",
+        "value": 9,
+        "mult": 38
+    },
+    {
+        "name": "Gr\u00fcnwinkel",
+        "value": 52,
+        "mult": 43
+    },
+    {
+        "name": "Oberreut",
+        "value": 52,
+        "mult": 28
+    },
+    {
+        "name": "Beiertheim-Bulach",
+        "value": 63,
+        "mult": 45
+    },
+    {
+        "name": "Weiherfeld-Dammerstock",
+        "value": 75,
+        "mult": 36
+    },
+    {
+        "name": "R\u00fcppurr",
+        "value": 90,
+        "mult": 12
+    },
+    {
+        "name": "Waldstadt",
+        "value": 88,
+        "mult": 26
+    },
+    {
+        "name": "Rintheim",
+        "value": 25,
+        "mult": 42
+    },
+    {
+        "name": "Hagsfeld",
+        "value": 11,
+        "mult": 11
+    },
+    {
+        "name": "Durlach",
+        "value": 66,
+        "mult": 48
+    },
+    {
+        "name": "Gr\u00f6tzingen",
+        "value": 76,
+        "mult": 31
+    },
+    {
+        "name": "Stupferich",
+        "value": 56,
+        "mult": 33
+    },
+    {
+        "name": "Hohenwettersbach",
+        "value": 71,
+        "mult": 40
+    },
+    {
+        "name": "Wolfartsweier",
+        "value": 14,
+        "mult": 30
+    },
+    {
+        "name": "Gr\u00fcnwettersbach",
+        "value": 78,
+        "mult": 28
+    },
+    {
+        "name": "Palmbach",
+        "value": 33,
+        "mult": 49
+    },
+    {
+        "name": "Neureut",
+        "value": 77,
+        "mult": 16
+    },
+    {
+        "name": "Nordstadt",
+        "value": 96,
+        "mult": 38
+    }
+]

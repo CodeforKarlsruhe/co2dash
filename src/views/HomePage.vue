@@ -45,7 +45,7 @@
               <ion-card-title>Geo1</ion-card-title>
               </ion-card-header>
               <ion-card-content class="geochart">
-                <GeoChart></GeoChart>
+                <ParticipantChart></ParticipantChart>
               </ion-card-content>
           </ion-card>
         </ion-col>
@@ -91,6 +91,7 @@ import { defineComponent } from 'vue';
 
 import BalanceChart from '../components/BalanceChart.vue'
 import GeoChart from '../components/GeoChart.vue'
+import ParticipantChart from '../components/ParticipantChart.vue'
 
 
 
@@ -105,6 +106,7 @@ export default defineComponent({
     IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
     BalanceChart,
     GeoChart,
+    ParticipantChart,
   }
 });
 </script>
