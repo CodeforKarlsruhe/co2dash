@@ -3,12 +3,12 @@
     <ion-header class="topHeader">
       <ion-grid>
         <ion-row>
-          <ion-col size="7">
+          <ion-col size="7" size-sm="4">
             <ion-img src="/img/kalogo.svg" class="logo"></ion-img>
           </ion-col>
-          <ion-col size="5">
+          <ion-col size="5" size-sm="8">
             <div class="headlineContainer">
-              <span class="headline">CO2Dash</span>
+              <span class="headline">CO2 runter – mein Beitrag für KA</span>
             </div>
           </ion-col>
         </ion-row>
@@ -41,13 +41,23 @@
 
         <ion-col size="12" size-sm="8">
           <ion-card class="heading">
+            <!--
             <ion-card-header>
-              <ion-card-title>CO2-Einsparen: Mein Beitrag für Karlsruhe</ion-card-title>
+              <ion-card-title>CO2 runter – mein Beitrag für KA</ion-card-title>
               </ion-card-header>
+              -->
               <ion-card-content >
-                Ganz viel Beschreibung ...
-                <br>
-                ... noch mehr Text ..
+                Wie viel CO2 kann ich durch einen veränderten Lebensstil einsparen und 
+                wie viel macht es in meinem Stadtteil aus, wenn ich noch andere in meinem Umfeld davon überzeuge? 
+                <p>
+                Die zwei Aspekte zeigt spielerisch diese App, die auf dem persönlichen CO2 Rechner 
+                des Bundesumweltamtes basiert und für diese Aktion vereinfacht wurde.
+                In dieser Klima-Challenge werden nicht nur die persönlichen Ambitionen zum Klimaschutz gezeigt, 
+                sondern auch die Einsparungen, die erreicht werden können, wenn wir noch andere Menschen in 
+                unserem Umfeld für den Klimaschutz begeistern. 
+                Persönliche Maßnahmen für den Klimaschutz werden umso erfolgreicher, wenn wir auch andere Menschen davon überzeugen.
+                </p>
+                <p class="mitmachen">Machen Sie mit: Nutzen Sie die App über den QR-Code</p>
               </ion-card-content>
           </ion-card>
         </ion-col>
@@ -67,6 +77,80 @@
         </ion-col>
 
         <ion-col size="12" size-sm="8">
+
+        <!--
+         <ion-row>
+          <ion-col size="12" size-sm="6">
+            <div style='background:#f00;height:200px;width:100%;'>
+            </div>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <div style='background:#f00;height:200px;width:100%;'>
+            </div>
+          </ion-col>
+         </ion-row>
+         <ion-row>
+          <ion-col size="12" size-sm="6">
+            <div style='background:#f00;height:200px;width:100%;'>
+            </div>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <div style='background:#f00;height:200px;width:100%;'>
+            </div>
+          </ion-col>
+         </ion-row>
+        -->
+         <ion-row>
+          <ion-col size="12" size-sm="6">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Einsparungen</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <GeoChart></GeoChart>
+              </ion-card-content>
+          </ion-card>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>CO2 Bilanz</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <BalanceChart></BalanceChart>
+              </ion-card-content>
+          </ion-card>
+          </ion-col>
+         </ion-row>
+         <ion-row>
+          <ion-col size="12" size-sm="6">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Ziele</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Das Paris Ziel von 1,5°C ist sehr ambitioniert und bedeutet einen verbleibenden 
+                jährlichen CO2 pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person bis 2040 (grüne Linie). 
+                <p>
+                Die Stadt favorisiert bisher das 1,75°C Ziel, bei dem noch 4,1 Tonnen pro Person bis 2040 verbleiben (rote Linie).
+                </p>
+              </ion-card-content>
+          </ion-card>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Paris Limits</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ParisChart></ParisChart>
+              </ion-card-content>
+          </ion-card>
+          </ion-col>
+         </ion-row>
+
+        </ion-col>
+<!--
           <ion-card>
             <ion-card-header>
               <ion-card-title>CO2 Bilanz</ion-card-title>
@@ -102,8 +186,8 @@
           </ion-card>
         </ion-col>
 
+-->
       </ion-row>
-
 
 
     </ion-grid>
@@ -208,4 +292,8 @@ ion-card-title {
   padding-bottom: 0;
 }
 
+.mitmachen {
+  font-size: 120%;
+  font-weight: bold;
+}
 </style>

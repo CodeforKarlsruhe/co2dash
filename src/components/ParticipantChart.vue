@@ -2,10 +2,10 @@
   <!-- need class for container div to set 100% height 
   (div needed for v-if on chart) 
   -->
-  <div class="map" v-if="isMapLoaded">
+  <div  v-if="isMapLoaded">
   <vue-echarts :option="option" class="chart"  ref="chart" />
   </div>
-  <div class="map"  v-else>
+  <div class="default"  v-else>
   Map not loaded yet
   </div>
 
@@ -71,7 +71,15 @@ export default {
                 },
                 yAxis: {
                     type: 'category',
-                    data: []
+                    data: [],
+                    interval:0,
+                    axisLabel: {
+                        fontSize: 6,
+                        //formatter: '{value} t CO2'
+                    },
+                    axisTick: {
+                        interval: 0
+                    },
                 },
                 series: [
                     {
@@ -94,7 +102,8 @@ export default {
         const data = await r.data
         this.mapLoaded = true
         console.log("Data Loaded",data)
-        data.forEach(x => {
+        // sort array to have highest value at bottom (first)
+        data.sort((a,b)=>{return a.name < b.name}).forEach(x => {
             this.option.yAxis.data.push(x.name)
             this.option.series[0].data.push(x.value)
             this.option.series[1].data.push(x.mult)
@@ -115,11 +124,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.map {
+.default {
     height:200px;
 }
 .chart {
-    height:200px;
+    height:400px;
     width:100%;
     margin-left:auto;
     margin-right:auto;
