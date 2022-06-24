@@ -129,11 +129,7 @@
               <ion-card-title>Ziele</ion-card-title>
               </ion-card-header>
               <ion-card-content>
-                Das Paris Ziel von 1,5°C ist sehr ambitioniert und bedeutet einen verbleibenden 
-                jährlichen CO2 pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person bis 2040 (grüne Linie). 
-                <p>
-                Die Stadt favorisiert bisher das 1,75°C Ziel, bei dem noch 4,1 Tonnen pro Person bis 2040 verbleiben (rote Linie).
-                </p>
+                <InfoChart></InfoChart>
               </ion-card-content>
           </ion-card>
           </ion-col>
@@ -205,6 +201,7 @@ import { defineComponent } from 'vue';
 
 import BalanceChart from '../components/BalanceChart.vue'
 import ParisChart from '../components/ParisChart.vue'
+import InfoChart from '../components/InfoChart.vue'
 import GeoChart from '../components/GeoChart.vue'
 import ParticipantChart from '../components/ParticipantChart.vue'
 
@@ -221,6 +218,7 @@ export default defineComponent({
     IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
     BalanceChart,
     ParisChart,
+    InfoChart,
     GeoChart,
     ParticipantChart,
   }

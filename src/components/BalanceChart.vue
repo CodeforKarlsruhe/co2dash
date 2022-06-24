@@ -1,9 +1,5 @@
 <template>
 
-<teleport to="head">
-<meta name="description" content="Chart1"/>
-</teleport>
-
   <vue-echarts :option="option"  class="chart" ref="chart" />
 
 </template>
