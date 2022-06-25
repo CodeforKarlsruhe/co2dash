@@ -1,0 +1,8 @@
+Sektor;t pro Kopf;Anmerkung
+Wohnen/Heizen;1,209647483;aus THG_Bilanz KA
+Strom;0,591933274;aus THG_Bilanz KA
+Wirtschaft / Infrastruktur;1,200296091;aus THG_Bilanz KA/3 - Rest geht in sonst. Konsum
+Mobilität;2,321019937;aus THG_Bilanz KA
+Ernährung;1,7;UBA Rechner
+sonst. Konsum;3,8;UBA Rechner
+Summe;10,82289679;
