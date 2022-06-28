@@ -72,10 +72,13 @@ try {
     $qrCode->setErrorCorrection('high');
     $qrCode->setImageType(Endroid\QrCode\QrCode::IMAGE_TYPE_PNG);
     
-    // now we can directly output the qrcode
-    //$qrCode->render();
-    // // save it to a file
+    // now we can output the qrcode
+    //$qrCode->render(); //not usefull
+    // save PNG it to a file
     $qrCode->save( __DIR__ . '/qrcode.png');
+    $binaryImg = file_get_contents( __DIR__ . '/qrcode.png');
+    $textImg = 'data:image/png;base64,' . base64_encode($binaryImg);
+    file_put_contents(__DIR__ . '/qrcode.b64', $textImg);
     
 } catch (Exception $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
