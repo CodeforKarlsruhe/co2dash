@@ -75,7 +75,7 @@ try {
     // now we can directly output the qrcode
     //$qrCode->render();
     // // save it to a file
-    $qrCode->save('qrcode.png');
+    $qrCode->save( __DIR__ . '/qrcode.png');
     
 } catch (Exception $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
