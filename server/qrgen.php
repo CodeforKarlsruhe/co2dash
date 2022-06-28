@@ -98,6 +98,7 @@ try {
 	die("Failed: " . $e->getMessage());
 }
 
+echo "New code: " . $newCode . PHP_EOL;
 
 ?>
 
