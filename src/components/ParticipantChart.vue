@@ -37,7 +37,7 @@ export default {
     methods: {
         async readDistricts() {
             //const r = await axios.get("/data/districts-mult.json")
-            const urls = ["http://localhost:9000/rest.php?table=districts","/rest.php?table=districts"]
+            const urls = ["/rest.php?table=districts","http://localhost:9000/rest.php?table=districts"]
             for (let url in urls) {
                 try {
                     console.log(urls[url])
