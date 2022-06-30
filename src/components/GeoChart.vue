@@ -59,14 +59,14 @@ export default {
                 visualMap: {
                     left: 'left',
                     top:"center",
-                    min: -20,
-                    max: 20,
+                    min: -10,
+                    max: 10,
                     inRange: {
                         color:
                         ['#ff0000', '#cc0033', '#990066', '#660099', '#3300cc', '#0000ff', '#001acc', '#003399', '#004d66', '#006633']
                     },
                     text: ['Gut', 'Schlecht'],
-                    calculable: true,
+                    calculable: false,
                 },
                 toolbox: {
                     show: false,
@@ -136,7 +136,7 @@ export default {
                     console.log("Data Loaded",data)
                     const mapData = []
                     data.forEach(x => {
-                        mapData.push({"name":x.name,"value":parseFloat(x.savingTotal)})
+                        mapData.push({"name":x.name,"value":parseFloat(x.savingTotal)*100})
                     })
                     this.option.series[0].data = mapData
                     console.log(this.chart)

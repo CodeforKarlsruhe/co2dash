@@ -31,7 +31,7 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-img 
-                  src="/img/qrcode.png" 
+                  :src="qrcode" 
                   class="qr"
                 >
                 </ion-img>
@@ -218,6 +218,7 @@ import ParisChart from '../components/ParisChart.vue'
 import GeoChart from '../components/GeoChart.vue'
 import ParticipantChart from '../components/ParticipantChart.vue'
 
+import axios from 'axios'
 
 
 export default defineComponent({
@@ -234,7 +235,35 @@ export default defineComponent({
     //InfoChart,
     GeoChart,
     ParticipantChart,
-  }
+  },
+  data () {
+    return {
+      qrcode: "/img/qrcode.png",
+      timer: 0,
+    }
+  },
+  methods: {
+      async readQr() {
+          const urls = ["/rest.php?table=qr","http://localhost:9000/rest.php?table=qr"]
+          for (let url in urls) {
+              try {
+                  console.log(urls[url])
+                  const r = await axios.get(urls[url])
+                  const data = await r.data
+                  console.log("Data Loaded",data)
+                  this.qrcode = data.qr
+                  break;
+              } catch (e: any) {
+                  console.log("Axios failed: ",e.message)
+              }
+          }
+      }
+  },
+  async beforeMount() {
+      this.timer = setInterval(this.readQr, 10000)
+      await this.readQr();
+  },
+
 });
 </script>
 

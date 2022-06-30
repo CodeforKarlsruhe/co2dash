@@ -130,12 +130,17 @@ switch ($meth) {
 
 header('HTTP/1.0 200 OK');
 
+/* for tux 2
 // there seems to be an issue with district names on local mysql
 // force utf acceptance!
 $j = json_encode($result,JSON_INVALID_UTF8_IGNORE);
 mlog("Result json: " . $j);
 //echo json_encode($result);
 print($j);
+*/
+/* for KA server*/
+echo json_encode($result);
+
 ob_end_flush();
 
 
