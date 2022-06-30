@@ -104,7 +104,7 @@
           <ion-col size="12" size-sm="6">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Einsparungen</ion-card-title>
+              <ion-card-title>Einsparung nach Stadtteil</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <GeoChart></GeoChart>

@@ -58,23 +58,14 @@ export default {
                 visualMap: {
                     left: 'left',
                     top:"center",
-                    min: 1,
-                    max: 100,
+                    min: -20,
+                    max: 20,
                     inRange: {
-                        color: [
-                        '#313695',
-                        '#4575b4',
-                        '#74add1',
-                        '#abd9e9',
-                        '#e0f3f8',
-                        '#ffffbf',
-                        '#fee090',
-                        '#fdae61',
-                        '#f46d43',
-                        '#d73027',
-                        '#a50026'
-                        ]
+                        color:
+                        ['#ff0000', '#cc0033', '#990066', '#660099', '#3300cc', '#0000ff', '#001acc', '#003399', '#004d66', '#006633']
                     },
+                    text: ['Gut', 'Schlecht'],
+                    calculable: true,
                 },
                 toolbox: {
                     show: false,
@@ -86,17 +77,21 @@ export default {
                     roam: true,
                     map: 'KA',
                     emphasis: {
-                    label: {
-                        show: true
-                    }
+                        label: {
+                            show: true
+                        }
+                    },
+                    itemStyle: {
+                        borderColor: "#000",
+                        borderWidth: 1,
                     },
                     data:
                     [
-                        {'name': 'Innenstadt-Ost', 'value': 7},
+                        {'name': 'Innenstadt-Ost', 'value': -7},
                         {'name': 'Innenstadt-West', 'value': 71},
                         {'name': 'Südstadt', 'value': 19}, 
                         {'name': 'Südweststadt', 'value': 23},
-                        {'name': 'Weststadt', 'value': 47},
+                        {'name': 'Weststadt', 'value': -47},
                         {'name': 'Nordweststadt', 'value': 40},
                         {'name': 'Oststadt', 'value': 1},
                         {'name': 'Mühlburg', 'value': 5},
@@ -108,7 +103,7 @@ export default {
                         {'name': 'Weiherfeld-Dammerstock', 'value': 75},
                         {'name': 'Rüppurr', 'value': 90},
                         {'name': 'Waldstadt', 'value': 88},
-                        {'name': 'Rintheim', 'value': 25},
+                        {'name': 'Rintheim', 'value': -25},
                         {'name': 'Hagsfeld', 'value': 11}, 
                         {'name': 'Durlach', 'value': 66}, 
                         {'name': 'Grötzingen', 'value': 76}, 
