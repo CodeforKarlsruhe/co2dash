@@ -50,12 +50,12 @@
                 Wie viel CO2 kann ich durch einen veränderten Lebensstil einsparen und 
                 wie viel macht es in meinem Stadtteil aus, wenn ich noch andere in meinem Umfeld davon überzeuge? 
                 <p>
-                Die zwei Aspekte zeigt spielerisch diese App, die auf dem persönlichen CO2 Rechner 
-                des Bundesumweltamtes basiert und für diese Aktion vereinfacht wurde.
+                Die zwei Aspekte zeigt spielerisch diese App, die auf einer vereinfachten Version des CO2 Rechners 
+                des Bundesumweltamtes basiert.
                 In dieser Klima-Challenge werden nicht nur die persönlichen Ambitionen zum Klimaschutz gezeigt, 
                 sondern auch die Einsparungen, die erreicht werden können, wenn wir noch andere Menschen in 
                 unserem Umfeld für den Klimaschutz begeistern. 
-                Persönliche Maßnahmen für den Klimaschutz werden umso erfolgreicher, wenn wir auch andere Menschen davon überzeugen.
+                Persönliche Maßnahmen für den Klimaschutz werden erfolgreicher, wenn wir auch andere Menschen davon überzeugen.
                 </p>
                 <p class="mitmachen">Machen Sie mit: Nutzen Sie die App über den QR-Code</p>
               </ion-card-content>
@@ -68,7 +68,7 @@
         <ion-col size="12" size-sm="4">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Teilnehmer:Innen</ion-card-title>
+              <ion-card-title>Beteiligung</ion-card-title>
               </ion-card-header>
               <ion-card-content class="geochart">
                 <ParticipantChart></ParticipantChart>
@@ -128,8 +128,21 @@
             <ion-card-header>
               <ion-card-title>Ziele</ion-card-title>
               </ion-card-header>
-              <ion-card-content>
+              <ion-card-content class="infotext">
+                <!--
                 <InfoChart></InfoChart>
+                -->
+                <p>
+                Das Paris Ziel von 1,5°C ist sehr ambitioniert und bedeutet einen verbleibenden 
+                jährlichen CO2 pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person 
+                bis 2030 (grüne Linie, gestrichelt).
+                </p>
+                <p>
+                Die Stadt favorisiert bisher das 1,75°C Ziel, bei dem noch 4,1 Tonnen pro Person 
+                bis 2040 verbleiben (blaue Linie, gepunktet).
+                </p>
+
+
               </ion-card-content>
           </ion-card>
           </ion-col>
@@ -201,7 +214,7 @@ import { defineComponent } from 'vue';
 
 import BalanceChart from '../components/BalanceChart.vue'
 import ParisChart from '../components/ParisChart.vue'
-import InfoChart from '../components/InfoChart.vue'
+//import InfoChart from '../components/InfoChart.vue'
 import GeoChart from '../components/GeoChart.vue'
 import ParticipantChart from '../components/ParticipantChart.vue'
 
@@ -218,7 +231,7 @@ export default defineComponent({
     IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
     BalanceChart,
     ParisChart,
-    InfoChart,
+    //InfoChart,
     GeoChart,
     ParticipantChart,
   }
@@ -244,6 +257,9 @@ ion-card-title {
   text-align: center;
 }
 
+ion-card-content, ion-card-content p {
+    font-size: 16px;
+}
 
 
 /* custom */
@@ -293,5 +309,9 @@ ion-card-title {
 .mitmachen {
   font-size: 120%;
   font-weight: bold;
+}
+
+.infotext {
+  height: 210px;
 }
 </style>

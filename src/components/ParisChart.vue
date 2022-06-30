@@ -87,6 +87,7 @@ const chartOption = {
         lineStyle: {
           type: 'dashed',
           width: 3,
+          color: '#0f0',
         },
         data: [
           [{
@@ -110,8 +111,9 @@ const chartOption = {
             // Mark line with a fixed X position in starting point. This is used to generate an arrow pointing to maximum line.
               name: "KA Klimaschutz",
               lineStyle: {
-                type: 'dashed',
+                type: 'dotted',
                 width: 7,
+                color: '#00f',
               },
               label: {
                 show:true,

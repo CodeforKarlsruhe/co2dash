@@ -83,7 +83,7 @@ export default {
                 },
                 series: [
                     {
-                        name: 'Teilnehmer',
+                        name: 'Teilnehmer:Innen',
                         type: 'bar',
                         data: []
                    },
@@ -128,7 +128,7 @@ export default {
     height:200px;
 }
 .chart {
-    height:400px;
+    height:500px;
     width:100%;
     margin-left:auto;
     margin-right:auto;

@@ -25,11 +25,14 @@ const chartOption = {
       type: 'shadow'
     }
   },
-  legend: {},
+  legend: {
+    orient: 'vertical',
+    right: 10,
+  },
   grid:
     {
     left: '3%',
-    right: '4%',
+    right: '30%',
     top: '15%',
     bottom: '10%',
     containLabel: true
@@ -37,10 +40,10 @@ const chartOption = {
   xAxis:
     {
       type: 'category',
-      name: 'Bilanztyp 2022',
+      name: 'Klimabilanz Karlsruhe 2022',
       nameLocation:"center",
       nameGap: 20,
-      data: ["NOW","KA"],
+      data: ["CO2APP","Offiziell"],
       axisLine: {
         show: true,
         symbol: "none",
