@@ -34,8 +34,37 @@ export default {
             }
         }
     },
+    methods: {
+        async readDistricts() {
+            //const r = await axios.get("/data/districts-mult.json")
+            const urls = ["http://localhost:9000/rest.php?table=districts","/rest.php?table=districts"]
+            for (let url in urls) {
+                try {
+                    console.log(urls[url])
+                    const r = await axios.get(urls[url])
+                    const data = await r.data
+                    console.log("Data Loaded",data)
+                    this.option.yAxis.data = []
+                    this.option.series[0].data = []
+                    this.option.series[1].data = []
+                    // sort array to have highest value at bottom (first)
+                    data.sort((a,b)=>{return a.name < b.name}).forEach(x => {
+                        this.option.yAxis.data.push(x.name)
+                        this.option.series[0].data.push(parseInt(x.users))
+                        this.option.series[1].data.push(parseInt(x.mults))
+                    })
+                    if (this.isMapLoaded) this.chart.setOption(this.option)
+                    //this.option.yAxis.data = ydata
+                    break;
+                } catch (e) {
+                    console.log("Axios failed: ",e.message)
+                }
+            }
+        }
+    },
     data ()  {
         return {
+            timer: null,
             option : {
                 title: {
                 show: false,
@@ -97,22 +126,9 @@ export default {
           }
     },
     async beforeMount() {
-        try {
-        const r = await axios.get("/data/districts-mult.json")
-        const data = await r.data
+        this.timer = setInterval(this.readDistricts, 10000)
+        await this.readDistricts();
         this.mapLoaded = true
-        console.log("Data Loaded",data)
-        // sort array to have highest value at bottom (first)
-        data.sort((a,b)=>{return a.name < b.name}).forEach(x => {
-            this.option.yAxis.data.push(x.name)
-            this.option.series[0].data.push(x.value)
-            this.option.series[1].data.push(x.mult)
-        })
-        //console.log(ydata)
-        //this.option.yAxis.data = ydata
-        } catch (e) {
-            console.log("Axios failed: ",e.message)
-        }
     },
     setup(){
         const chart = ref()

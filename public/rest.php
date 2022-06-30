@@ -48,8 +48,6 @@ function readTable($table){
 		die("Config Error");
 	}
 
-	mlog("Config: " . json_encode($cfg));
-
 	// open db 
 	$dsn = "mysql:host=" .$cfg["dbhost"] . ";dbname=" . $cfg["dbname"];
 	$attr = array(
@@ -65,7 +63,6 @@ function readTable($table){
 		header('HTTP/1.0 501 Server Error');
 		die();
 	}
-	mlog("DB open");
 
 	// code requested?
 	if ($table == "qr") {
@@ -107,7 +104,9 @@ switch ($meth) {
         $parms = array("table" => FILTER_SANITIZE_STRING);
         $args = filter_input_array(INPUT_GET, $parms, true);
 
-        if ($args & ($args["table"] !== null)) {
+		//mlog("Args: " . print_r($args,true));
+
+        if ($args && ($args["table"] !== null)) {
             $table = $args["table"];
         }
         // code is no table but b64
@@ -118,6 +117,7 @@ switch ($meth) {
             header("HTTP/1.1 400 Bad request");
         }  else {
             $result = readTable($table);
+			//mlog("Result: " . print_r($result,true));
         }
         break;
 
@@ -129,7 +129,13 @@ switch ($meth) {
 }
 
 header('HTTP/1.0 200 OK');
-echo json_encode($result);
+
+// there seems to be an issue with district names on local mysql
+// force utf acceptance!
+$j = json_encode($result,JSON_INVALID_UTF8_IGNORE);
+mlog("Result json: " . $j);
+//echo json_encode($result);
+print($j);
 ob_end_flush();
 
 

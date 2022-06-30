@@ -36,6 +36,7 @@ export default {
     },
     data ()  {
         return {
+            timer: null,
             option : {
                 title: {
                 show: false,
@@ -87,6 +88,7 @@ export default {
                     },
                     data:
                     [
+                        /*
                         {'name': 'Innenstadt-Ost', 'value': -7},
                         {'name': 'Innenstadt-West', 'value': 71},
                         {'name': 'Südstadt', 'value': 19}, 
@@ -114,11 +116,40 @@ export default {
                         {'name': 'Palmbach', 'value': 33},
                         {'name': 'Neureut', 'value': 77},
                         {'name': 'Nordstadt', 'value': 96}
+                        */
                     ]
                    }
                 ]
             }
           }
+    },
+    methods: {
+        async readDistricts() {
+            if (!this.mapLoaded) return
+            //const r = await axios.get("/data/districts-mult.json")
+            const urls = ["http://localhost:9000/rest.php?table=districts","/rest.php?table=districts"]
+            for (let url in urls) {
+                try {
+                    console.log(urls[url])
+                    const r = await axios.get(urls[url])
+                    const data = await r.data
+                    console.log("Data Loaded",data)
+                    const mapData = []
+                    data.forEach(x => {
+                        mapData.push({"name":x.name,"value":parseFloat(x.savingTotal)})
+                    })
+                    this.option.series[0].data = mapData
+                    console.log(this.chart)
+                    this.chart.setOption(this.option)
+                    break;
+                } catch (e) {
+                    console.log("Axios failed: ",e.message)
+                }
+            }
+        }
+    },
+    async beforeMount() {
+        this.timer = setInterval(this.readDistricts, 10000)
     },
     setup(){
         // https://echarts.apache.org/en/option.html#geo.map
@@ -126,6 +157,7 @@ export default {
         echarts.registerMap('USA', {geoJSON: map})
         console.log("Registered")
         */
+        const chart = ref()
         const mapLoaded = ref(false)
         //console.log("Mounted - Chart6:",chart6)
         //console.log("Mounted - Chart6-v:",chart6.value)
@@ -139,7 +171,7 @@ export default {
             console.log("Loaded",mapLoaded.value)
             })
 
-        return {mapLoaded}
+        return {mapLoaded, chart}
     }
 }
 </script>
