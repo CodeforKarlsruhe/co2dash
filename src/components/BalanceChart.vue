@@ -18,6 +18,8 @@ import { ref } from "vue"
 //  npm install  vue-window-size
 import { useWindowSize } from 'vue-window-size';
 
+import axios from 'axios'
+
 const chartOption = {
   tooltip: {
     trigger: 'axis',
@@ -32,7 +34,7 @@ const chartOption = {
   grid:
     {
     left: '3%',
-    right: '30%',
+    right: '40%',
     top: '15%',
     bottom: '10%',
     containLabel: true
@@ -177,6 +179,22 @@ const chartOption = {
         */
       },
     },
+    {
+      name: 'Sector4',
+      type: 'bar',
+      stack: 'total',
+      data: [3.9,5.3],
+      label: {
+      },
+    },
+    {
+      name: 'Sector5',
+      type: 'bar',
+      stack: 'total',
+      data: [3.9,5.3],
+      label: {
+      },
+    },
 
   ]
 };
@@ -189,6 +207,8 @@ export default {
     },
     data ()  {
         return {
+          timer: null,
+
         }
     },
     watch: {
@@ -200,6 +220,65 @@ export default {
           this.chart.chart.resize({height:Math.round(n/3)})
         }
       }
+    },
+    methods: {
+        async readBalance() {
+            //if (!this.mapLoaded) return
+            /*
+            this.option.series[1].data = [Math.random()*10,Math.random()*20];
+            this.option.series[2].data = [Math.random()*10,Math.random()*20];
+            this.chart.setOption(this.option)
+            console.log("update")
+            */
+            let balance
+            let defaults
+            let urls = ["/rest.php?table=balance","http://localhost:9000/rest.php?table=balance"]
+            for (let url in urls) {
+                try {
+                    console.log(urls[url])
+                    const r = await axios.get(urls[url])
+                    balance = await r.data
+                    console.log("balance Loaded",balance)
+                    break;
+                } catch (e) {
+                    console.log("Axios failed: ",e.message)
+                }
+            }
+            urls = ["/rest.php?table=defaults","http://localhost:9000/rest.php?table=defaults"]
+            for (let url in urls) {
+                try {
+                    console.log(urls[url])
+                    const r = await axios.get(urls[url])
+                    defaults = await r.data
+                    console.log("defaults Loaded",defaults)
+                    break;
+                } catch (e) {
+                    console.log("Axios failed: ",e.message)
+                }
+            }
+            if ((balance == undefined) || (balance.sector1 == undefined) 
+            || (defaults == undefined) || (defaults.sector1 == undefined)) {
+              console.log("No data")
+              return
+            }
+            // set data
+            const sums = [0,0]
+            this.option.series[1].data = [parseFloat(balance.sector1),parseFloat(defaults.sector1)]
+            this.option.series[2].data = [parseFloat(balance.sector2),parseFloat(defaults.sector2)]
+            this.option.series[3].data = [parseFloat(balance.sector3),parseFloat(defaults.sector3)]
+            this.option.series[4].data = [parseFloat(balance.sector4),parseFloat(defaults.sector4)]
+            this.option.series[5].data = [parseFloat(balance.sector5),parseFloat(defaults.sector5)]
+            sums[0] = parseFloat(balance.sector1) + parseFloat(balance.sector2) + 
+              parseFloat(balance.sector3) + parseFloat(balance.sector4) + parseFloat(balance.sector5)
+            sums[1] = parseFloat(defaults.sector1) + parseFloat(defaults.sector2) + 
+              parseFloat(defaults.sector3) + parseFloat(defaults.sector4) + parseFloat(defaults.sector5)
+            this.option.series[0].data = sums
+            this.chart.setOption(this.option)
+            console.log("Balance update")
+        }
+    },
+    async beforeMount() {
+        this.timer = setInterval(this.readBalance, 10000)
     },
     mounted() {
       this.wheight++ // trigger resize

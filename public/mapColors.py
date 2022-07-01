@@ -8,7 +8,7 @@ def colorFader(c1,c2,mix=0): #fade (linear interpolate) from color c1 (at mix=0)
     return mpl.colors.to_hex((1-mix)*c1 + mix*c2)
 
 c1='red' #blue
-c2='blue' #green
+c2='yellow' #green
 c3='green' #green
 
 cols = []
