@@ -82,7 +82,7 @@ const chartOption = {
     {
       name: 'Summe Sektoren',
       type: 'bar',
-      barWidth: 1,
+      barWidth: 3,
       data: [12.6,12],
       label: {
         show:false,
@@ -183,7 +183,7 @@ const chartOption = {
       name: 'Sector4',
       type: 'bar',
       stack: 'total',
-      data: [3.9,5.3],
+      data: [.9,.3],
       label: {
       },
     },
@@ -191,7 +191,7 @@ const chartOption = {
       name: 'Sector5',
       type: 'bar',
       stack: 'total',
-      data: [3.9,5.3],
+      data: [.9,.3],
       label: {
       },
     },
@@ -256,8 +256,13 @@ export default {
                     console.log("Axios failed: ",e.message)
                 }
             }
+            // overwrite defaults with klimabilanz kennzahlen except sector4 (privater konsum)
+            defaults.sector1 = (1.801 + 1.557) // Privat + Industrie
+            defaults.sector2 = (2.42) // Verkehr
+            defaults.sector3 = (1.889) // Gewerbe
+            defaults.sector5 = (.155) // Stadt
             if ((balance == undefined) || (balance.sector1 == undefined) 
-            || (defaults == undefined) || (defaults.sector1 == undefined)) {
+            || (defaults == undefined) || (defaults.sector4 == undefined)) {
               console.log("No data")
               return
             }
