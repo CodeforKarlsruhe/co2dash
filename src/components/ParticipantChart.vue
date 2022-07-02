@@ -103,7 +103,7 @@ export default {
                     data: [],
                     interval:0,
                     axisLabel: {
-                        fontSize: 6,
+                        fontSize: 10,
                         //formatter: '{value} t CO2'
                     },
                     axisTick: {
