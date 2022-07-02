@@ -198,6 +198,12 @@
 -->
       </ion-row>
 
+      <ion-row>
+      <ion-col size="12">
+      </ion-col>
+            <ion-img src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
+            <ion-label>OK Lab Karlsruhe</ion-label>
+      </ion-row>
 
     </ion-grid>
     </ion-content>
