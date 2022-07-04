@@ -13,7 +13,7 @@
 
 <script>
 
-import * as echarts from 'echarts';
+//import * as echarts from 'echarts';
 import { VueEcharts } from 'vue3-echarts';
 import axios from 'axios'
 
@@ -103,7 +103,7 @@ export default {
                     data: [],
                     interval:0,
                     axisLabel: {
-                        fontSize: 6,
+                        fontSize: 10,
                         //formatter: '{value} t CO2'
                     },
                     axisTick: {
