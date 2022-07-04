@@ -130,16 +130,22 @@ switch ($meth) {
 
 header('HTTP/1.0 200 OK');
 
-/* for tux 2
+/* for tux 2 */
 // there seems to be an issue with district names on local mysql
 // force utf acceptance!
-$j = json_encode($result,JSON_INVALID_UTF8_IGNORE);
-mlog("Result json: " . $j);
+//$j = json_encode($result,JSON_INVALID_UTF8_IGNORE);
+
+$j = json_encode($result);
+// mlog("Result json: " . $j);
 //echo json_encode($result);
 print($j);
+
+
+/* issue can be solved by comverting database, tables an fields to utf8-general-ci 
+default is utf8mb4-general-ci. Which is OK in pronciple but data is probably not utb8mb4 
 */
 /* for KA server*/
-echo json_encode($result);
+//echo json_encode($result);
 
 ob_end_flush();
 
