@@ -139,7 +139,7 @@ mlog("Result json: " . $j);
 print($j);
 */
 /* for KA server*/
-echo json_encode($result);
+echo json_encode($result,JSON_INVALID_UTF8_IGNORE);
 
 ob_end_flush();
 

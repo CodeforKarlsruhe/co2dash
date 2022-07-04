@@ -12,3 +12,9 @@ horizontal line chart
 people and "mitstreiter" per district (stacked or 2 columns)
 
 
+## Dashboard "Bunte Nacht"
+
+Version used at [Bunte Nacht, 1.7.2022](https://ok-lab-karlsruhe.de/projekte/bunte-nacht/)
+![](co2dash.png)
+
+With **SIMPLE** backend, see [rest.php](public/rest.php)
