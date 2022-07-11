@@ -10,12 +10,12 @@
         "mult": 38
     },
     {
-        "name": "S\u00fcdstadt",
+        "name": "Suedstadt",
         "value": 19,
         "mult": 19
     },
     {
-        "name": "S\u00fcdweststadt",
+        "name": "Suedweststadt",
         "value": 23,
         "mult": 38
     },
@@ -35,7 +35,7 @@
         "mult": 9
     },
     {
-        "name": "M\u00fchlburg",
+        "name": "Muehlburg",
         "value": 5,
         "mult": 9
     },
@@ -50,7 +50,7 @@
         "mult": 38
     },
     {
-        "name": "Gr\u00fcnwinkel",
+        "name": "Gruenwinkel",
         "value": 52,
         "mult": 43
     },
@@ -70,7 +70,7 @@
         "mult": 36
     },
     {
-        "name": "R\u00fcppurr",
+        "name": "Rueppurr",
         "value": 90,
         "mult": 12
     },
@@ -95,7 +95,7 @@
         "mult": 48
     },
     {
-        "name": "Gr\u00f6tzingen",
+        "name": "Groetzingen",
         "value": 76,
         "mult": 31
     },
@@ -115,7 +115,7 @@
         "mult": 30
     },
     {
-        "name": "Gr\u00fcnwettersbach",
+        "name": "Gruenwettersbach",
         "value": 78,
         "mult": 28
     },
