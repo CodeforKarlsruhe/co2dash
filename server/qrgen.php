@@ -7,14 +7,8 @@ use Endroid\QrCode\QrCode;
 // ini file on server is elsewhere
 $cfg = array();
 try {
-    if (!isset($_SERVER['HTTP_HOST']) or !isset($_SERVER['HTTPS'])) {
-        $cfg = parse_ini_file("config.ini", false);
-        $cfg["local"] = true;
-    } else {
-		// server
         $cfg = parse_ini_file("/var/www/files/co2/config.ini", false);
         $cfg["local"] = false;
-    }
 
 } catch (Exception $e) {
     die("Config Error");
