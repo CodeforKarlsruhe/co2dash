@@ -28,13 +28,20 @@ const chartOption = {
     }
   },
   legend: {
+    // type: plain or scroll
+    // height: adjust for mobile
+    //type: "scroll",
+    //height: 50,
     orient: 'vertical',
+    top: 20,
+    width: "40%",
+    left: "60%",
     right: 10,
   },
   grid:
     {
     left: '3%',
-    right: '40%',
+    right: '50%',
     top: '15%',
     bottom: '10%',
     containLabel: true
@@ -45,7 +52,7 @@ const chartOption = {
       name: 'Klimabilanz Karlsruhe 2022',
       nameLocation:"center",
       nameGap: 20,
-      data: ["CO2APP","Offiziell"],
+      data: ["CO2APP","Stadt+Konsum"],
       axisLine: {
         show: true,
         symbol: "none",
@@ -140,7 +147,7 @@ const chartOption = {
       }
     },
     {
-      name: 'Sector1',
+      name: 'Wohnen - Industrie+Priv',
       type: 'bar',
       //barWidth: 100,
       stack: 'total',
@@ -150,13 +157,13 @@ const chartOption = {
       }
     },
     {
-      name: 'Sector2',
+      name: 'Mobilität - Verkehr',
       type: 'bar',
       stack: 'total',
       data: [4.7,2.8]
     },
     {
-      name: 'Sector3',
+      name: 'Ernährung - Gewerbe',
       type: 'bar',
       stack: 'total',
       data: [3.9,5.3],
@@ -180,15 +187,15 @@ const chartOption = {
       },
     },
     {
-      name: 'Sector4',
+      name: 'Konsum - Konsum',
       type: 'bar',
       stack: 'total',
-      data: [.9,.3],
+      data: [.9,.9],
       label: {
       },
     },
     {
-      name: 'Sector5',
+      name: 'Allgemein - Stadt',
       type: 'bar',
       stack: 'total',
       data: [.9,.3],
@@ -257,8 +264,17 @@ export default {
                 }
             }
             // overwrite defaults with klimabilanz kennzahlen except sector4 (privater konsum)
-            defaults.sector1 = (1.801 + 1.557) // Privat + Industrie
-            defaults.sector2 = (2.42) // Verkehr
+            /* see https://transparenz.karlsruhe.de/dataset/7306d25b-8b18-445f-9351-6eec030c7753/resource/fd9de911-5142-4083-9d1b-5e09788022b3/download/treibhausgase.csv
+            2019	Private Haushalte	real	548,4206526	BICO2BW-Bilanz	=>	1,80157961637392
+            2019	Gewerbe+Sonstiges	real	574,8490281	BICO2BW-Bilanz	=>	1,88839768635168
+            2019	Industrie	real	474,1086754	BICO2BW-Bilanz	=>	1,55746236305521
+            2019	Stadt	real	47,19236622	BICO2BW-Bilanz	=>	0,155028452388383
+            2019	Verkehr	real	706,5434952	BICO2BW-Bilanz	=>	2,32101827857732
+            2019	Summe	real	2351,114218	BICO2BW-Bilanz	=>	7,72348639832332
+            2019	Einwohner	Einwohner	304411	https://web5.karlsruhe.de/Stadtentwicklung/statistik/pdf/2020/2020-jahrbuch.pdf		
+            */
+            defaults.sector1 = (1.801 + 1.557) // Privat + Industrie, ~3.4
+            defaults.sector2 = (2.32) // Verkehr
             defaults.sector3 = (1.889) // Gewerbe
             defaults.sector5 = (.155) // Stadt
             if ((balance == undefined) || (balance.sector1 == undefined) 

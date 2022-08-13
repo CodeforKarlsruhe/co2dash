@@ -8,7 +8,7 @@ Cooperates with [co2app](https://github.com/CodeforKarlsruhe/co2app)
 Version used at [Bunte Nacht, 1.7.2022](https://ok-lab-karlsruhe.de/projekte/bunte-nacht/)
 ![](co2dash.png)
 
-With **SIMPLE** backend, see [rest.php](public/rest.php)
+With **SIMPLE** backend, see [rest.php](public/rest.php) and co2app infos
 
 ## Demo
 See [here](https://co2dash.ok-lab-karlsruhe.de)
