@@ -52,7 +52,7 @@ const chartOption = {
       name: 'Klimabilanz Karlsruhe 2022',
       nameLocation:"center",
       nameGap: 20,
-      data: ["CO2APP","Stadt+Konsum"],
+      data: ["CO2APP","Stadt"],
       axisLine: {
         show: true,
         symbol: "none",
