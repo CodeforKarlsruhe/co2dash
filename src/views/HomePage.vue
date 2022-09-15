@@ -4,10 +4,10 @@
     <ion-header class="topHeader">
       <ion-grid>
         <ion-row>
-          <ion-col lg="7" md="6" sm="4">
+          <ion-col size-lg="5" size-md="5" size-sm="4">
             <ion-img src="/img/kalogo.svg" class="logo"></ion-img>
           </ion-col>
-          <ion-col lg="5" md="6" sm="8">
+          <ion-col size-lg="7" size-md="7" size-sm="8">
             <div class="headlineContainer">
               <span class="headline">CO<sub>2</sub> runter – mein Beitrag für KA</span>
             </div>
@@ -20,22 +20,7 @@
     <ion-content :fullscreen="true"  class="onepnt5">
     <ion-grid>
       <ion-row class="toprow">
-        <ion-col size="12" size-sm="4">
-          <ion-card class="heading">
-            <ion-card-header class="qr-header">
-              <ion-card-title>Scannen Sie diesen Code</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-img 
-                  :src="qrcode" 
-                  class="qr"
-                >
-                </ion-img>
-                </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-        <ion-col size="12" size-sm="8">
+        <ion-col size="12">
           <ion-card class="heading">
             <!--
             <ion-card-header>
@@ -53,146 +38,88 @@
                 unserem Umfeld für den Klimaschutz begeistern. 
                 Persönliche Maßnahmen für den Klimaschutz werden erfolgreicher, wenn wir auch andere Menschen davon überzeugen.
                 </p>
-                <p class="mitmachen">Machen Sie mit: Nutzen Sie die App über den QR-Code</p>
-              </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12" size-sm="4">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Beteiligung</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="geochart">
-                <ParticipantChart></ParticipantChart>
-              </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-        <ion-col size="12" size-sm="8">
-
-        <!--
-         <ion-row>
-          <ion-col size="12" size-sm="6">
-            <div style='background:#f00;height:200px;width:100%;'>
-            </div>
-          </ion-col>
-          <ion-col size="12" size-sm="6">
-            <div style='background:#f00;height:200px;width:100%;'>
-            </div>
-          </ion-col>
-         </ion-row>
-         <ion-row>
-          <ion-col size="12" size-sm="6">
-            <div style='background:#f00;height:200px;width:100%;'>
-            </div>
-          </ion-col>
-          <ion-col size="12" size-sm="6">
-            <div style='background:#f00;height:200px;width:100%;'>
-            </div>
-          </ion-col>
-         </ion-row>
-        -->
-         <ion-row>
-          <ion-col size="12" size-sm="6">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Einsparung nach Stadtteil</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <GeoChart></GeoChart>
-              </ion-card-content>
-          </ion-card>
-          </ion-col>
-          <ion-col size="12" size-sm="6">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <BalanceChart></BalanceChart>
-              </ion-card-content>
-          </ion-card>
-          </ion-col>
-         </ion-row>
-         <ion-row>
-          <ion-col size="12" size-sm="6">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Ziele</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="infotext">
+                <span class="mitmachen">Machen Sie mit: 
+                <ion-button expand="inline" fill="outline" href="https://co2app.karlsruhe.de">CO<sub>2</sub> App</ion-button>
+                </span>
                 <!--
                 <InfoChart></InfoChart>
                 -->
                 <p>
                 Das Paris Ziel von 1,5°C ist sehr ambitioniert und bedeutet einen verbleibenden 
                 jährlichen CO<sub>2</sub> pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person 
-                bis 2030 (grüne Linie, gestrichelt).
+                bis 2030 (<em>Paris-Diagramm</em>, grüne Linie, gestrichelt).
                 </p>
                 <p>
                 Die Stadt favorisiert bisher das 1,75°C Ziel, bei dem noch 4,1 Tonnen pro Person 
-                bis 2040 verbleiben (blaue Linie, gepunktet).
+                bis 2040 verbleiben (<em>Paris-Diagramm</em>, blaue Linie, gepunktet).
                 </p>
 
 
-              </ion-card-content>
-          </ion-card>
-          </ion-col>
-          <ion-col size="12" size-sm="6">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Paris Limits</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <ParisChart></ParisChart>
-              </ion-card-content>
-          </ion-card>
-          </ion-col>
-         </ion-row>
 
-        </ion-col>
-<!--
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="CO<sub>2</sub>chart">
-                <BalanceChart></BalanceChart>
               </ion-card-content>
           </ion-card>
         </ion-col>
+
       </ion-row>
 
       <ion-row>
+          <ion-col  size-md="8" size-sm="12">
+  
+            <ion-grid>
+  
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <BalanceChart></BalanceChart>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
 
-        <ion-col size="12" size-sm="4">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Einsparungen</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="geochart">
-                <GeoChart></GeoChart>
-              </ion-card-content>
-          </ion-card>
-        </ion-col>
+              <ion-row>
+                <ion-col size-md="6" size-sm="12">
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Paris Limits</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ParisChart></ParisChart>
+                      </ion-card-content>
+                  </ion-card>
+                </ion-col>
+                <ion-col  size-md="6" size-sm="12">
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Einsparung nach Stadtteil</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <GeoChart></GeoChart>
+                      </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
 
-        <ion-col size="12" size-sm="8">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Paris Limits</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="CO<sub>2</sub>chart">
-                <ParisChart></ParisChart>
-              </ion-card-content>
-          </ion-card>
-        </ion-col>
 
--->
+          <ion-col size-md="4" size-sm="12" >
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Beteiligung</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content class="geochart">
+                      <ParticipantChart></ParticipantChart>
+                    </ion-card-content>
+                </ion-card>
+          </ion-col>
+
       </ion-row>
+
+
 
       <ion-row>
       <ion-col class="okl" size="6">
@@ -218,7 +145,7 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage,
   IonGrid, IonRow, IonCol,
-  IonImg,
+  IonImg,IonButton,
   IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
@@ -239,7 +166,7 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonGrid, IonRow, IonCol,
-    IonImg,
+    IonImg,IonButton,
     IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
     BalanceChart,
     ParisChart,
@@ -338,12 +265,33 @@ ion-card-content, ion-card-content p {
   margin-bottom: -.4rem;
 }
 
-.heading {
-    height:200px;
+/* smaller content on large screen */
+@media only screen and (min-width: 992px) {
+  .card-md {
+    max-width: 960px;
+    margin-left:auto;
+    margin-right:auto;
+  }
 }
 
-.qr-header {
-  padding-bottom: 0;
+/* smaller padding on small screen */
+@media only screen and (max-width: 599px) {
+ion-item {
+  --padding-start: 5px;
+  }
+  .logo {
+    height: 2rem;
+  }
+  .headline {
+    font-size: 1.3rem;
+  }
+}
+
+
+.heading {
+  /*
+    height:200px;
+    */
 }
 
 .mitmachen {
