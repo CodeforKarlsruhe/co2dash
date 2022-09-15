@@ -8,7 +8,7 @@
           </ion-col>
           <ion-col size="5" size-sm="8">
             <div class="headlineContainer">
-              <span class="headline">CO2 runter – mein Beitrag für KA</span>
+              <span class="headline">CO<sub>2</sub> runter – mein Beitrag für KA</span>
             </div>
           </ion-col>
         </ion-row>
@@ -16,7 +16,7 @@
       <!--      
       <ion-item>
       <ion-img src="/img/kalogo.svg" class="logo" slot="start"></ion-img>
-      <ion-title slot="start">CO2App</ion-title>
+      <ion-title slot="start">CO<sub>2</sub>App</ion-title>
       </ion-item>
       -->
     </ion-header>
@@ -43,14 +43,14 @@
           <ion-card class="heading">
             <!--
             <ion-card-header>
-              <ion-card-title>CO2 runter – mein Beitrag für KA</ion-card-title>
+              <ion-card-title>CO<sub>2</sub> runter – mein Beitrag für KA</ion-card-title>
               </ion-card-header>
               -->
               <ion-card-content >
-                Wie viel CO2 kann ich durch einen veränderten Lebensstil einsparen und 
+                Wie viel CO<sub>2</sub> kann ich durch einen veränderten Lebensstil einsparen und 
                 wie viel macht es in meinem Stadtteil aus, wenn ich noch andere in meinem Umfeld davon überzeuge? 
                 <p>
-                Die zwei Aspekte zeigt spielerisch diese App, die auf einer vereinfachten Version des CO2 Rechners 
+                Die zwei Aspekte zeigt spielerisch diese App, die auf einer vereinfachten Version des CO<sub>2</sub> Rechners 
                 des Bundesumweltamtes basiert.
                 In dieser Klima-Challenge werden nicht nur die persönlichen Ambitionen zum Klimaschutz gezeigt, 
                 sondern auch die Einsparungen, die erreicht werden können, wenn wir noch andere Menschen in 
@@ -114,7 +114,7 @@
           <ion-col size="12" size-sm="6">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>CO2 Bilanz</ion-card-title>
+              <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <BalanceChart></BalanceChart>
@@ -134,7 +134,7 @@
                 -->
                 <p>
                 Das Paris Ziel von 1,5°C ist sehr ambitioniert und bedeutet einen verbleibenden 
-                jährlichen CO2 pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person 
+                jährlichen CO<sub>2</sub> pro Kopf Ausstoß für Karlsruhe bei 2,6 Tonnen pro Person 
                 bis 2030 (grüne Linie, gestrichelt).
                 </p>
                 <p>
@@ -162,9 +162,9 @@
 <!--
           <ion-card>
             <ion-card-header>
-              <ion-card-title>CO2 Bilanz</ion-card-title>
+              <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
               </ion-card-header>
-              <ion-card-content class="co2chart">
+              <ion-card-content class="CO<sub>2</sub>chart">
                 <BalanceChart></BalanceChart>
               </ion-card-content>
           </ion-card>
@@ -189,7 +189,7 @@
             <ion-card-header>
               <ion-card-title>Paris Limits</ion-card-title>
               </ion-card-header>
-              <ion-card-content class="co2chart">
+              <ion-card-content class="CO<sub>2</sub>chart">
                 <ParisChart></ParisChart>
               </ion-card-content>
           </ion-card>
