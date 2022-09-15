@@ -2,19 +2,12 @@
   <ion-page>
 
     <ion-header class="topHeader">
-      <ion-grid>
-        <ion-row>
-          <ion-col size-lg="5" size-md="5" size-sm="4">
-            <ion-img src="/img/kalogo.svg" class="logo"></ion-img>
-          </ion-col>
-          <ion-col size-lg="7" size-md="7" size-sm="8">
-            <div class="headlineContainer">
-              <span class="headline">CO<sub>2</sub> runter – mein Beitrag für KA</span>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
+        <ion-item class="headline-container">
+          <ion-thumbnail class="logo" slot="start">
+            <img alt="Logo" src="/img/kalogo.svg" />
+          </ion-thumbnail>
+          <ion-label class="headline">CO<sub>2</sub> runter: Dashboard</ion-label>
+        </ion-item>
     </ion-header>
     
     <ion-content :fullscreen="true"  class="onepnt5">
@@ -22,6 +15,10 @@
       <ion-row class="toprow">
         <ion-col size="12">
           <ion-card class="heading">
+            <ion-card-header>
+              <ion-card-title>CO<sub>2</sub> runter - Mein Beitrag für KA</ion-card-title>
+              <ion-card-subtitle>Dashboard</ion-card-subtitle>
+            </ion-card-header>
             <!--
             <ion-card-header>
               <ion-card-title>CO<sub>2</sub> runter – mein Beitrag für KA</ion-card-title>
@@ -124,7 +121,7 @@
       <ion-row>
       <ion-col class="okl" size="6">
             <ion-img class="okl-image" src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
-            <ion-label class="okl-label">OK Lab Karlsruhe</ion-label>
+            <ion-label class="okl-label">Design: OK Lab Karlsruhe</ion-label>
       </ion-col>
       <ion-col class="imprint" size="6">
       <!--
@@ -147,6 +144,7 @@ import { IonContent, IonHeader, IonPage,
   IonGrid, IonRow, IonCol,
   IonImg,IonButton,
   IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
+  IonItem, IonLabel, IonThumbnail,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
@@ -173,6 +171,8 @@ export default defineComponent({
     //InfoChart,
     GeoChart,
     ParticipantChart,
+    IonItem, IonLabel, IonThumbnail,
+
   },
   data () {
     return {
@@ -248,22 +248,21 @@ ion-card-content, ion-card-content p {
 */
 .logo {
   height: 3rem;
-  width: 100%;
   padding: 0;
   object-position: left;
 }
 
-.headlineContainer {
-  display: flex;
-  justify-content: left;
-  align-items: flex-end;
-  height: 100%;
+.headline-container {
+  --inner-border-width: 0;
+}
+
+.headline {
   font-size: 2rem;
   font-weight: bold;
-}
-.headline {
   margin-bottom: -.4rem;
+  white-space: break-spaces;
 }
+
 
 /* smaller content on large screen */
 @media only screen and (min-width: 992px) {
@@ -286,6 +285,14 @@ ion-item {
     font-size: 1.3rem;
   }
 }
+
+/* smaller padding on small screen */
+@media only screen and (max-width: 399px) {
+  .headline {
+    font-size: 1.1rem;
+  }
+}
+
 
 
 .heading {
@@ -310,4 +317,10 @@ ion-item {
 .okl-label {
   vertical-align: top;
 }
+
+ion-thumbnail {
+  width: unset;
+  height: unset;
+}
+
 </style>
