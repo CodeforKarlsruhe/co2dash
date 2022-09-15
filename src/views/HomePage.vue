@@ -1,24 +1,20 @@
 <template>
   <ion-page>
+
     <ion-header class="topHeader">
       <ion-grid>
         <ion-row>
-          <ion-col size="7" size-sm="4">
+          <ion-col lg="7" md="6" sm="4">
             <ion-img src="/img/kalogo.svg" class="logo"></ion-img>
           </ion-col>
-          <ion-col size="5" size-sm="8">
+          <ion-col lg="5" md="6" sm="8">
             <div class="headlineContainer">
               <span class="headline">CO<sub>2</sub> runter – mein Beitrag für KA</span>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <!--      
-      <ion-item>
-      <ion-img src="/img/kalogo.svg" class="logo" slot="start"></ion-img>
-      <ion-title slot="start">CO<sub>2</sub>App</ion-title>
-      </ion-item>
-      -->
+
     </ion-header>
     
     <ion-content :fullscreen="true"  class="onepnt5">
@@ -199,10 +195,19 @@
       </ion-row>
 
       <ion-row>
-      <ion-col size="12">
+      <ion-col class="okl" size="6">
+            <ion-img class="okl-image" src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
+            <ion-label class="okl-label">OK Lab Karlsruhe</ion-label>
       </ion-col>
-            <ion-img src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
-            <ion-label>OK Lab Karlsruhe</ion-label>
+      <ion-col class="imprint" size="6">
+      <!--
+      <ion-button expand="block" fill="outline" class="routelink" href="https://ok-lab-karlsruhe.de/impressum/">Impressum</ion-button>
+      -->
+
+      <!--
+      -->
+      <ion-button expand="block" fill="outline" class="routelink" href="https://www.karlsruhe.de/impressum">Impressum</ion-button>
+      </ion-col>
       </ion-row>
 
     </ion-grid>
@@ -348,5 +353,13 @@ ion-card-content, ion-card-content p {
 
 .infotext {
   height: 210px;
+}
+
+.okl-image {
+  display: inline-block;
+  margin-right: .5rem;
+}
+.okl-label {
+  vertical-align: top;
 }
 </style>
