@@ -5,7 +5,7 @@
   <div class="map" v-if="isMapLoaded">
   <vue-echarts :option="option" class="chart"  ref="chart" />
   </div>
-  <div class="map"  v-else>
+  <div class="loading map"  v-else>
   Map not loaded yet
   </div>
 

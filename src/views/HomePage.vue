@@ -14,7 +14,7 @@
     <ion-grid>
       <ion-row class="toprow">
         <ion-col size="12">
-          <ion-card class="heading">
+          <ion-card class="heading1">
             <ion-card-header>
               <ion-card-title>CO<sub>2</sub> runter - Mein Beitrag für KA</ion-card-title>
               <ion-card-subtitle>Dashboard</ion-card-subtitle>
@@ -119,18 +119,18 @@
 
 
       <ion-row>
-      <ion-col class="okl" size="6">
+      <ion-col class="okl" size="7">
             <ion-img class="okl-image" src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
             <ion-label class="okl-label">Design: OK Lab Karlsruhe</ion-label>
       </ion-col>
-      <ion-col class="imprint" size="6">
+      <ion-col class="imprint" size="5">
       <!--
       <ion-button expand="block" fill="outline" class="routelink" href="https://ok-lab-karlsruhe.de/impressum/">Impressum</ion-button>
       -->
 
       <!--
       -->
-      <ion-button expand="block" fill="outline" class="routelink" href="https://www.karlsruhe.de/impressum">Impressum</ion-button>
+      <ion-button expand="block" fill="outline" class="routelink okl-button" href="https://www.karlsruhe.de/impressum">Impressum</ion-button>
       </ion-col>
       </ion-row>
 
@@ -228,6 +228,11 @@ ion-card-content, ion-card-content p {
     font-size: 16px;
 }
 
+ion-card-subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 
 /* custom */
 .routelink, .submit {
@@ -251,6 +256,7 @@ ion-card-content, ion-card-content p {
   padding: 0;
   object-position: left;
 }
+
 
 .headline-container {
   --inner-border-width: 0;
@@ -279,7 +285,7 @@ ion-item {
   --padding-start: 5px;
   }
   .logo {
-    height: 2rem;
+    height: 1.5rem;
   }
   .headline {
     font-size: 1.3rem;
@@ -288,18 +294,14 @@ ion-item {
 
 /* smaller padding on small screen */
 @media only screen and (max-width: 399px) {
+  .logo {
+    height: 1.4rem;
+  }
   .headline {
     font-size: 1.1rem;
   }
 }
 
-
-
-.heading {
-  /*
-    height:200px;
-    */
-}
 
 .mitmachen {
   font-size: 120%;
@@ -316,6 +318,12 @@ ion-item {
 }
 .okl-label {
   vertical-align: top;
+  font-size: 80%;
+}
+
+.okl-button {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 ion-thumbnail {

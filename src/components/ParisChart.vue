@@ -1,6 +1,9 @@
 <template>
 
-  <vue-echarts :option="option"  class="chart" ref="chart" />
+  <vue-echarts v-if="dataLoaded" :option="option"  class="chart" ref="chart" />
+  <div v-else class="loading chart">
+    Loading ...
+  </div>
 
 </template>
 
@@ -176,14 +179,16 @@ export default {
       }
     },
     mounted() {
+      this.dataLoaded = true
       this.wheight++ // trigger resize
     },
     setup () {
         const chart = ref({})
         const option = ref(chartOption)
+        const dataLoaded = ref(false)
         //const height = ref()
         const { width, height } = useWindowSize();
-        return { chart, option, wwidth: width, wheight:height }
+        return { chart, option, dataLoaded,  wwidth: width, wheight:height }
     }
 }
 </script>
