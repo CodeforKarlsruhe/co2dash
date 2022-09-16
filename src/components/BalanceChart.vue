@@ -231,7 +231,7 @@ export default {
         }
       },
       wwidth(n) {
-        console.log("h",n)
+        console.log("w",n)
         if (this.chart) {
           //console.log(this.chart)
           //console.log(this.chart.chart)
@@ -250,24 +250,30 @@ export default {
             */
             let balance
             let defaults
-            let urls = ["/rest.php?table=balance","http://localhost:9000/rest.php?table=balance"]
+            let urls = ["/rest.php?table=balance","http://localhost:9000/rest.php?table=balance","https://co2dash.karlsruhe.de/rest.php?table=balance"]
             for (let url in urls) {
                 try {
                     console.log(urls[url])
                     const r = await axios.get(urls[url])
                     balance = await r.data
+                    if (typeof(balance) == "string") {
+                      throw ("balance invalid")
+                    } 
                     console.log("balance Loaded",balance)
                     break;
                 } catch (e) {
                     console.log("Axios failed: ",e.message)
                 }
             }
-            urls = ["/rest.php?table=defaults","http://localhost:9000/rest.php?table=defaults"]
+            urls = ["/rest.php?table=defaults","http://localhost:9000/rest.php?table=defaults","https://co2dash.karlsruhe.de/rest.php?table=defaults"]
             for (let url in urls) {
                 try {
                     console.log(urls[url])
                     const r = await axios.get(urls[url])
                     defaults = await r.data
+                    if (typeof(defaults) == "string") {
+                      throw ("defaults invalid")
+                    } 
                     console.log("defaults Loaded",defaults)
                     break;
                 } catch (e) {
@@ -331,7 +337,7 @@ export default {
 <style scoped>
 .chart {
     height:200px;
-    max-width:100%;
+    width:100%;
     margin-left:auto;
     margin-right:auto;
 }
