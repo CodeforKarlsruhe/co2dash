@@ -74,7 +74,7 @@ const chartOption = {
       nameLocation:"center",
       nameGap: 20,
       */
-      data: ["KA 2019","CO2APP","KSK 1,75°","Paris 1.5°","CO2 neutral"],
+      data: ["KA 2019","CO2APP","APP Mittel","KSK 1,75°","Paris 1.5°","CO2 neutral"],
       //data: ["2019","APP","KSK","Paris","Neutral"],
       axisLine: {
         show: true,
@@ -112,8 +112,8 @@ const chartOption = {
     {
       name: 'Summe Sektoren',
       type: 'bar',
-      barWidth: 5,
-      data: [12,12.6,4.1,2.6,.5],
+      barWidth: "10%",
+      data: [12,12.6,12,4.1,2.6,.5],
       label: {
         show:false,
       },
@@ -174,7 +174,7 @@ const chartOption = {
     {
       name: 'Wohnen - Industrie+Priv',
       type: 'bar',
-      barWidth: 10,
+      barWidth: "20%",
       stack: 'total',
       data: [3.9,4],
       emphasis: {
@@ -275,6 +275,7 @@ export default {
             */
             let balance
             let defaults
+            let scaled = [] // submissions scaled to average
             let urls = ["/rest.php?table=balance","http://localhost:9000/rest.php?table=balance","https://co2dash.karlsruhe.de/rest.php?table=balance"]
             for (let url in urls) {
                 try {
@@ -305,6 +306,30 @@ export default {
                     console.log("Axios failed: ",e.message)
                 }
             }
+            urls = ["/rest.php?table=subs","http://localhost:9000/rest.php?table=subs","https://co2dash.karlsruhe.de/rest.php?table=subs"]
+            for (let url in urls) {
+                try {
+                    console.log(urls[url])
+                    const r = await axios.get(urls[url])
+                    const subs = await r.data
+                    if (typeof(subs) == "string") {
+                      throw ("subs invalid")
+                    } 
+                    console.log("subs Loaded",subs)
+                    const users = parseFloat(subs.mults) + parseFloat(subs.subs) // total people
+                    console.log("Users: ", users)
+                    scaled[0] = parseFloat(defaults.sector1) - (parseFloat(subs.save1)/users)
+                    scaled[1] = parseFloat(defaults.sector2) - (parseFloat(subs.save2)/users)
+                    scaled[2] = parseFloat(defaults.sector3) - (parseFloat(subs.save3)/users)
+                    scaled[3] = parseFloat(defaults.sector4) - (parseFloat(subs.save4)/users)
+                    scaled[4] = parseFloat(defaults.sector5) - (parseFloat(subs.save5)/users)
+                    console.log("Scaled:",scaled)
+                    break;
+                } catch (e) {
+                    console.log("Axios failed: ",e.message)
+                }
+            }
+
             // overwrite defaults with klimabilanz kennzahlen except sector4 (privater konsum)
             /* see https://transparenz.karlsruhe.de/dataset/7306d25b-8b18-445f-9351-6eec030c7753/resource/fd9de911-5142-4083-9d1b-5e09788022b3/download/treibhausgase.csv
             2019	Private Haushalte	real	548,4206526	BICO2BW-Bilanz	=>	1,80157961637392
@@ -324,20 +349,21 @@ export default {
               console.log("No data")
               return
             }
-            // set data
-            const sums = [0,0]
-            this.option.series[1].data = [parseFloat(defaults.sector1),parseFloat(balance.sector1)]
-            this.option.series[2].data = [parseFloat(defaults.sector2),parseFloat(balance.sector2)]
-            this.option.series[3].data = [parseFloat(defaults.sector3),parseFloat(balance.sector3)]
-            this.option.series[4].data = [parseFloat(defaults.sector4),parseFloat(balance.sector4)]
-            this.option.series[5].data = [parseFloat(defaults.sector5),parseFloat(balance.sector5)]
-            sums[1] = parseFloat(balance.sector1) + parseFloat(balance.sector2) + 
-              parseFloat(balance.sector3) + parseFloat(balance.sector4) + parseFloat(balance.sector5)
+            // set data for actual app results
+            let sums = []
+            this.option.series[1].data = [parseFloat(defaults.sector1),parseFloat(balance.sector1),scaled[0]]
+            this.option.series[2].data = [parseFloat(defaults.sector2),parseFloat(balance.sector2),scaled[1]]
+            this.option.series[3].data = [parseFloat(defaults.sector3),parseFloat(balance.sector3),scaled[2]]
+            this.option.series[4].data = [parseFloat(defaults.sector4),parseFloat(balance.sector4),scaled[3]]
+            this.option.series[5].data = [parseFloat(defaults.sector5),parseFloat(balance.sector5),scaled[4]]
             sums[0] = parseFloat(defaults.sector1) + parseFloat(defaults.sector2) + 
               parseFloat(defaults.sector3) + parseFloat(defaults.sector4) + parseFloat(defaults.sector5)
-            sums[2] = 4.1 // KSK 1.75°
-            sums[3] = 2.6 // Paris 1.5°
-            sums[4] = .5 // neutral
+            sums[1] = parseFloat(balance.sector1) + parseFloat(balance.sector2) + 
+              parseFloat(balance.sector3) + parseFloat(balance.sector4) + parseFloat(balance.sector5)
+            sums[2] = scaled[0] + scaled[1]  + scaled[2]  + scaled[3]  + scaled[4] 
+            sums[3] = 4.1 // KSK 1.75°
+            sums[4] = 2.6 // Paris 1.5°
+            sums[5] = .5 // neutral
             this.option.series[0].data = sums
             this.chart.setOption(this.option)
             //this.$emit("balanceUpdated")

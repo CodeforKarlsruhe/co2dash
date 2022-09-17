@@ -54,7 +54,8 @@ export default {
                     '$1,'
                     );
                     return params.seriesName + '<br/>' + params.name + ': ' + valueStr;
-                }
+                },
+                position: [10, 10],
                 },
                 visualMap: {
                     left: 'left',
@@ -157,7 +158,7 @@ export default {
         }
     },
     async beforeMount() {
-        this.timer = setInterval(this.readDistricts, 10000)
+        this.timer = setInterval(this.readDistricts, 5000)
     },
     setup(){
         // https://echarts.apache.org/en/option.html#geo.map

@@ -1,5 +1,4 @@
 <template>
-
   <vue-echarts v-if="dataLoaded" :option="option"  class="chart" ref="chart" />
   <div v-else class="loading chart">
     Loading ...
@@ -26,7 +25,8 @@ const chartOption = {
     trigger: 'axis',
     axisPointer: {
       type: 'shadow'
-    }
+    },
+    position: [10, 10],
   },
   legend: {},
   grid:
@@ -67,7 +67,7 @@ const chartOption = {
     {
       name: 'Summe Sektoren',
       type: 'bar',
-      //barWidth: 5,
+      barWidth: "20%",
       data: [12,7,0,0,0],
       markpoint: {
         symbol: "pin",

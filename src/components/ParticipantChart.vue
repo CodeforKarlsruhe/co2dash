@@ -97,7 +97,9 @@ export default {
                     trigger: 'axis',
                     axisPointer: {
                     type: 'shadow'
-                    }
+                    },
+                    position: ["50%",10],
+
                 },
                 xAxis: {
                     type: 'value',
@@ -132,7 +134,7 @@ export default {
           }
     },
     async beforeMount() {
-        this.timer = setInterval(this.readDistricts, 10000)
+        this.timer = setInterval(this.readDistricts, 5000)
         await this.readDistricts();
         this.mapLoaded = true
     },

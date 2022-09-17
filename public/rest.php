@@ -70,6 +70,32 @@ function readTable($table){
 		return array("qr" => $qr);
 	}
 
+	// submission sums requested?
+
+	if ($table == "subs") {
+		// we need sums of sector savings, mults and count 
+
+		$sql  = "SELECT sum(sector1) as save1, ";
+		$sql .= "sum(sector2) as save2, ";
+		$sql .= "sum(sector3) as save3, ";
+		$sql .= "sum(sector4) as save4, ";
+		$sql .= "sum(sector5) as save5, ";
+		$sql .= "sum(mult) as mults, ";
+		$sql .= "count(mult) as subs ";
+		$sql .= " from submissions";
+		$query = $pdo->prepare( $sql);
+		$query->execute();
+		$result = $query->fetchAll();
+	
+		if (count($result) == 1) {
+			return $result[0];
+		} else {
+			mlog("Subs:" . print_r($result,true));
+			return $result;
+		}
+	
+	}
+
 	if ($table == "defaults") {
 		$sql =  "select sector1,sector2,sector3,sector4,sector5 from defaults";
 	} else {
@@ -82,6 +108,7 @@ function readTable($table){
 	if (count($result) == 1) {
 		return $result[0];
 	} else {
+		mlog("Max:" . print_r($result,true));
 		return $result;
 	}
 
@@ -110,7 +137,7 @@ switch ($meth) {
             $table = $args["table"];
         }
         // code is no table but b64
-        define("TABLES", array("balance","districts","defaults","qr"));
+        define("TABLES", array("balance","districts","defaults","qr","subs"));
         
         if (array_search($table, TABLES) === false) {
             mlog("Invalid table");
