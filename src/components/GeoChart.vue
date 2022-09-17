@@ -66,7 +66,7 @@ export default {
                         ['#ff0000', '#ff3300', '#ff6600', '#ff9900', '#ffcc00', '#ffff00', '#cce600', '#99cc00', '#66b300', '#339900']
                         //['#ff0000', '#cc0033', '#990066', '#660099', '#3300cc', '#0000ff', '#001acc', '#003399', '#004d66', '#006633']
                     },
-                    text: ['Gut', 'Schlecht'],
+                    text: ['Viel', 'Wenig'],
                     calculable: false,
                 },
                 toolbox: {
@@ -128,12 +128,19 @@ export default {
         async readDistricts() {
             if (!this.mapLoaded) return
             //const r = await axios.get("/data/districts-mult.json")
-            const urls = ["/rest.php?table=districts","http://localhost:9000/rest.php?table=districts"]
+            const urls = [
+                "/rest.php?table=districts",
+                "http://localhost:9000/rest.php?table=districts",
+                "https://co2dash.karlsruhe.de/rest.php?table=districts"
+            ]
             for (let url in urls) {
                 try {
                     console.log(urls[url])
                     const r = await axios.get(urls[url])
                     const data = await r.data
+                    if (typeof(data) == "string") {
+                      throw ("districts invalid")
+                    } 
                     console.log("Data Loaded",data)
                     const mapData = []
                     data.forEach(x => {

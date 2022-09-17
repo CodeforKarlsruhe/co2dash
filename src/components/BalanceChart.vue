@@ -1,6 +1,6 @@
 <template>
 
-  <vue-echarts v-if="dataLoaded" :option="option"  class="chart" ref="chart" />
+  <vue-echarts v-if="true" :option="option" class="chart" ref="chart" />
   <div v-else class="loading chart">
     Loading ...
   </div>
@@ -28,34 +28,54 @@ const chartOption = {
     trigger: 'axis',
     axisPointer: {
       type: 'shadow'
-    }
+    },
+    valueFormatter: value => value.toFixed(2),
+    position: [10, 10],
   },
   legend: {
     // type: plain or scroll
     // height: adjust for mobile
     //type: "scroll",
     //height: 50,
+    /*
     orient: 'vertical',
     top: 20,
     width: "40%",
     left: "60%",
     right: 10,
+    */
+    orient: 'horizontal',
+    //bottom: "5%",
+    top: "65%",
+    width: "75%",
+    left: "5%",
+    //right: 10,
   },
   grid:
     {
+      /*
     left: '3%',
     right: '50%',
     top: '15%',
     bottom: '10%',
     containLabel: true
+    */
+    left: '3%',
+    right: '3%',
+    top: '15%',
+    bottom: '50%',
+    containLabel: true
   },
   xAxis:
     {
       type: 'category',
-      name: 'Klimabilanz Karlsruhe 2022',
+      /*
+      name: 'Klimabilanz Karlsruhe',
       nameLocation:"center",
       nameGap: 20,
-      data: ["CO2APP","Stadt"],
+      */
+      data: ["KA 2019","CO2APP","KSK 1,75°","Paris 1.5°","CO2 neutral"],
+      //data: ["2019","APP","KSK","Paris","Neutral"],
       axisLine: {
         show: true,
         symbol: "none",
@@ -92,11 +112,12 @@ const chartOption = {
     {
       name: 'Summe Sektoren',
       type: 'bar',
-      barWidth: 3,
-      data: [12.6,12],
+      barWidth: 5,
+      data: [12,12.6,4.1,2.6,.5],
       label: {
         show:false,
       },
+      /*
       markLine: {
         lineStyle: {
           type: 'dashed',
@@ -148,13 +169,14 @@ const chartOption = {
           },
         ]
       }
+      */
     },
     {
       name: 'Wohnen - Industrie+Priv',
       type: 'bar',
-      //barWidth: 100,
+      barWidth: 10,
       stack: 'total',
-      data: [4,3.9],
+      data: [3.9,4],
       emphasis: {
          focus: "none", //'series',
       }
@@ -163,13 +185,13 @@ const chartOption = {
       name: 'Mobilität - Verkehr',
       type: 'bar',
       stack: 'total',
-      data: [4.7,2.8]
+      data: [2.8,4.7]
     },
     {
       name: 'Ernährung - Gewerbe',
       type: 'bar',
       stack: 'total',
-      data: [3.9,5.3],
+      data: [5.3,3.9],
       label: {
       /*
         normal: {
@@ -201,7 +223,7 @@ const chartOption = {
       name: 'Allgemein - Stadt',
       type: 'bar',
       stack: 'total',
-      data: [.9,.3],
+      data: [.3,.9],
       label: {
       },
     },
@@ -215,6 +237,9 @@ export default {
       components: {
         VueEcharts,
     },
+    emits: [
+      "balanceUpdated",
+    ],
     data ()  {
         return {
           timer: null,
@@ -301,18 +326,22 @@ export default {
             }
             // set data
             const sums = [0,0]
-            this.option.series[1].data = [parseFloat(balance.sector1),parseFloat(defaults.sector1)]
-            this.option.series[2].data = [parseFloat(balance.sector2),parseFloat(defaults.sector2)]
-            this.option.series[3].data = [parseFloat(balance.sector3),parseFloat(defaults.sector3)]
-            this.option.series[4].data = [parseFloat(balance.sector4),parseFloat(defaults.sector4)]
-            this.option.series[5].data = [parseFloat(balance.sector5),parseFloat(defaults.sector5)]
-            sums[0] = parseFloat(balance.sector1) + parseFloat(balance.sector2) + 
+            this.option.series[1].data = [parseFloat(defaults.sector1),parseFloat(balance.sector1)]
+            this.option.series[2].data = [parseFloat(defaults.sector2),parseFloat(balance.sector2)]
+            this.option.series[3].data = [parseFloat(defaults.sector3),parseFloat(balance.sector3)]
+            this.option.series[4].data = [parseFloat(defaults.sector4),parseFloat(balance.sector4)]
+            this.option.series[5].data = [parseFloat(defaults.sector5),parseFloat(balance.sector5)]
+            sums[1] = parseFloat(balance.sector1) + parseFloat(balance.sector2) + 
               parseFloat(balance.sector3) + parseFloat(balance.sector4) + parseFloat(balance.sector5)
-            sums[1] = parseFloat(defaults.sector1) + parseFloat(defaults.sector2) + 
+            sums[0] = parseFloat(defaults.sector1) + parseFloat(defaults.sector2) + 
               parseFloat(defaults.sector3) + parseFloat(defaults.sector4) + parseFloat(defaults.sector5)
+            sums[2] = 4.1 // KSK 1.75°
+            sums[3] = 2.6 // Paris 1.5°
+            sums[4] = .5 // neutral
             this.option.series[0].data = sums
             this.chart.setOption(this.option)
-            console.log("Balance update")
+            //this.$emit("balanceUpdated")
+            console.log("Chart: Balance update")
         }
     },
     async beforeMount() {

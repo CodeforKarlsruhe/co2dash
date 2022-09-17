@@ -71,7 +71,10 @@
                       <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
-                      <BalanceChart></BalanceChart>
+                      <BalanceChart 
+                        @balanceUpdated="balanceUpdated($event)"
+                        :key="updated"
+                      ></BalanceChart>
                     </ion-card-content>
                   </ion-card>
                 </ion-col>
@@ -146,7 +149,7 @@ import { IonContent, IonHeader, IonPage,
   IonCard, IonCardTitle, IonCardHeader, IonCardContent, 
   IonItem, IonLabel, IonThumbnail,
 } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 import BalanceChart from '../components/BalanceChart.vue'
 import ParisChart from '../components/ParisChart.vue'
@@ -176,31 +179,18 @@ export default defineComponent({
   },
   data () {
     return {
-      qrcode: "/img/qrcode.png",
-      timer: 0,
     }
   },
   methods: {
-      async readQr() {
-          const urls = ["/rest.php?table=qr","http://localhost:9000/rest.php?table=qr"]
-          for (let url in urls) {
-              try {
-                  console.log(urls[url])
-                  const r = await axios.get(urls[url])
-                  const data = await r.data
-                  console.log("Data Loaded",data)
-                  this.qrcode = data.qr
-                  break;
-              } catch (e: any) {
-                  console.log("Axios failed: ",e.message)
-              }
-          }
-      }
+    balanceUpdated(){
+      console.log("Home: Balance update")
+      this.updated++
+    },
   },
-  async beforeMount() {
-      this.timer = setInterval(this.readQr, 10000)
-      await this.readQr();
-  },
+  setup () {
+    const updated = ref(0)
+    return { updated }
+  }
 
 });
 </script>
