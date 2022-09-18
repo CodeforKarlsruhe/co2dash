@@ -1,6 +1,8 @@
 <template>
 
-  <vue-echarts v-if="true" :option="option" class="chart" ref="chart" />
+  <div v-if="dataLoaded" style="min-width: 100px; min-height:100px;">
+  <vue-echarts :option="option" class="chart" ref="chart" />
+  </div>
   <div v-else class="loading chart">
     Loading ...
   </div>
@@ -265,6 +267,15 @@ export default {
       }
     },
     methods: {
+      updateBalance() {
+        if (this.dataLoaded) {
+          this.chart.setOption(this.option)
+          this.$emit("balanceUpdated")
+          console.log("Chart: Balance update")
+        } else {
+          console.log("Chart: No data")
+        }
+      },
         async readBalance() {
             //if (!this.mapLoaded) return
             /*
@@ -365,12 +376,16 @@ export default {
             sums[4] = 2.6 // Paris 1.5°
             sums[5] = .5 // neutral
             this.option.series[0].data = sums
-            this.chart.setOption(this.option)
+
+            this.updateBalance()
+
+            // this.chart.setOption(this.option)
             //this.$emit("balanceUpdated")
-            console.log("Chart: Balance update")
+            console.log("Chart: Balance loaded")
         }
     },
     async beforeMount() {
+        await this.readBalance()
         this.dataLoaded = true
         this.timer = setInterval(this.readBalance, 5000)
     },

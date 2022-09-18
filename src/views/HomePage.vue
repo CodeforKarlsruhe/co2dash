@@ -73,7 +73,6 @@
                     <ion-card-content>
                       <BalanceChart 
                         @balanceUpdated="balanceUpdated($event)"
-                        :key="updated"
                       ></BalanceChart>
                     </ion-card-content>
                   </ion-card>
@@ -184,7 +183,7 @@ export default defineComponent({
   methods: {
     balanceUpdated(){
       console.log("Home: Balance update")
-      this.updated++
+      //this.updated++
     },
   },
   setup () {

@@ -6,7 +6,7 @@
   <vue-echarts :option="option" class="chart"  ref="chart" />
   </div>
   <div class="loading map"  v-else>
-  Map not loaded yet
+  Loading ...
   </div>
 
 </template>
@@ -30,7 +30,7 @@ export default {
         isMapLoaded: {
             get() {
                 console.log("Getting map: ",this.mapLoaded)
-                return this.mapLoaded
+                return this.mapLoaded && this.dataLoaded
             }
         }
     },
@@ -127,7 +127,17 @@ export default {
     },
     methods: {
         async readDistricts() {
-            if (!this.mapLoaded) return
+            if (!this.mapLoaded) {
+                await axios.get("/data/ka.geojson").then((r) => {
+                    const geo = r.data
+                    console.log(geo) 
+                    echarts.registerMap('KA', {geoJSON: geo})
+                    this.mapLoaded = true
+                    console.log("Loaded",this.mapLoaded)
+                    this.readDistricts()
+                    })
+            }
+
             //const r = await axios.get("/data/districts-mult.json")
             const urls = [
                 "/rest.php?table=districts",
@@ -148,6 +158,7 @@ export default {
                         mapData.push({"name":x.name,"value":parseFloat(x.savingTotal)*100})
                     })
                     this.option.series[0].data = mapData
+                    this.dataLoaded = true
                     console.log(this.chart)
                     this.chart.setOption(this.option)
                     break;
@@ -158,6 +169,7 @@ export default {
         }
     },
     async beforeMount() {
+        await this.readDistricts()
         this.timer = setInterval(this.readDistricts, 5000)
     },
     setup(){
@@ -168,19 +180,22 @@ export default {
         */
         const chart = ref()
         const mapLoaded = ref(false)
+        const dataLoaded = ref(false)
         //console.log("Mounted - Chart6:",chart6)
         //console.log("Mounted - Chart6-v:",chart6.value)
         //axios.get("/data/USA.json").then((r) => {
         //axios.get("/data/countries2.json").then((r) => {
+        /*
         axios.get("/data/ka.geojson").then((r) => {
             const geo = r.data
             console.log(geo) 
             echarts.registerMap('KA', {geoJSON: geo})
             mapLoaded.value = true
             console.log("Loaded",mapLoaded.value)
+            this.readDistricts()
             })
-
-        return {mapLoaded, chart}
+        */
+        return {mapLoaded, dataLoaded, chart}
     }
 }
 </script>
