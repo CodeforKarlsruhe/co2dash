@@ -327,13 +327,22 @@ export default {
                       throw ("subs invalid")
                     } 
                     console.log("subs Loaded",subs)
-                    const users = parseFloat(subs.mults) + parseFloat(subs.subs) // total people
-                    console.log("Users: ", users)
-                    scaled[0] = parseFloat(defaults.sector1) - (parseFloat(subs.save1)/users)
-                    scaled[1] = parseFloat(defaults.sector2) - (parseFloat(subs.save2)/users)
-                    scaled[2] = parseFloat(defaults.sector3) - (parseFloat(subs.save3)/users)
-                    scaled[3] = parseFloat(defaults.sector4) - (parseFloat(subs.save4)/users)
-                    scaled[4] = parseFloat(defaults.sector5) - (parseFloat(subs.save5)/users)
+                    if (parseFloat(subs.subs) == 0) {
+                      scaled[0] = parseFloat(defaults.sector1)
+                      scaled[1] = parseFloat(defaults.sector2)
+                      scaled[2] = parseFloat(defaults.sector3)
+                      scaled[3] = parseFloat(defaults.sector4)
+                      scaled[4] = parseFloat(defaults.sector5)
+                    } else {
+                      const users = parseFloat(subs.mults) + parseFloat(subs.subs) // total people
+                      console.log("Users: ", users)
+                      scaled[0] = parseFloat(defaults.sector1) - (parseFloat(subs.save1)/users)
+                      scaled[1] = parseFloat(defaults.sector2) - (parseFloat(subs.save2)/users)
+                      scaled[2] = parseFloat(defaults.sector3) - (parseFloat(subs.save3)/users)
+                      scaled[3] = parseFloat(defaults.sector4) - (parseFloat(subs.save4)/users)
+                      scaled[4] = parseFloat(defaults.sector5) - (parseFloat(subs.save5)/users)
+                    }
+
                     console.log("Scaled:",scaled)
                     break;
                 } catch (e) {
