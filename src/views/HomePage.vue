@@ -244,14 +244,20 @@ ion-card-subtitle {
 }
 */
 .logo {
-  height: 3rem;
-  padding: 0;
+  /*height: 3rem;*/
+  padding-right: .2rem;
   object-position: left;
+  max-width: 35%;
+}
+
+.logo > img {
+  max-width: 95%;
 }
 
 
 .headline-container {
   --inner-border-width: 0;
+  margin: 1rem;
 }
 
 .headline {
@@ -277,20 +283,22 @@ ion-item {
   --padding-start: 5px;
   }
   .logo {
-    height: 1.5rem;
+    /* height: 1.5rem; */
   }
   .headline {
     font-size: 1.3rem;
+    margin-bottom: .2rem;
   }
 }
 
 /* smaller padding on small screen */
 @media only screen and (max-width: 399px) {
   .logo {
-    height: 1.4rem;
+    /* height: 1.4rem; */
   }
   .headline {
     font-size: 1.1rem;
+    margin-bottom: .5rem;
   }
 }
 
