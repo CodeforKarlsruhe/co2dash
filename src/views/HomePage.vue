@@ -60,12 +60,12 @@
       </ion-row>
 
       <ion-row>
-          <ion-col  size-md="8" size-sm="12">
+          <ion-col  size="12" size-md="8">
   
             <ion-grid>
   
               <ion-row>
-                <ion-col>
+                <ion-col size="12">
                   <ion-card>
                     <ion-card-header>
                       <ion-card-title>CO<sub>2</sub> Bilanz</ion-card-title>
@@ -80,7 +80,7 @@
               </ion-row>
 
               <ion-row>
-                <ion-col size-md="6" size-sm="12">
+                <ion-col size="12" size-md="6">
                   <ion-card>
                     <ion-card-header>
                       <ion-card-title>Paris Limits</ion-card-title>
@@ -90,7 +90,7 @@
                       </ion-card-content>
                   </ion-card>
                 </ion-col>
-                <ion-col  size-md="6" size-sm="12">
+                <ion-col  size="12" size-md="6">
                   <ion-card>
                     <ion-card-header>
                       <ion-card-title>Einsparung nach Stadtteil</ion-card-title>
@@ -105,7 +105,7 @@
           </ion-col>
 
 
-          <ion-col size-md="4" size-sm="12" >
+          <ion-col size="12" size-md="4" >
                 <ion-card>
                   <ion-card-header>
                     <ion-card-title>Beteiligung</ion-card-title>
@@ -123,7 +123,7 @@
       <ion-row>
       <ion-col class="okl" size="7">
             <ion-img class="okl-image" src="/img/logo.svg" style="height:30px;"><a href="https://ok-lab-karlsruhe.de" target=_blank></a></ion-img>
-            <ion-label class="okl-label">Design: OK Lab Karlsruhe</ion-label>
+            <ion-label class="okl-label">Realisierung: <a href="https://ok-lab-karlsruhe.de" target=_blank>OK Lab Karlsruhe</a></ion-label>
       </ion-col>
       <ion-col class="imprint" size="5">
       <!--
@@ -156,8 +156,9 @@ import ParisChart from '../components/ParisChart.vue'
 import GeoChart from '../components/GeoChart.vue'
 import ParticipantChart from '../components/ParticipantChart.vue'
 
-import axios from 'axios'
+//import axios from 'axios'
 
+import { getPlatforms } from '@ionic/vue';
 
 export default defineComponent({
   name: 'HomePage',
@@ -188,6 +189,8 @@ export default defineComponent({
   },
   setup () {
     const updated = ref(0)
+    const plt = getPlatforms(); // returns ["iphone", "ios", "mobile", "mobileweb"] from an iPhone
+    console.log("Platform: ",plt)
     return { updated }
   }
 
