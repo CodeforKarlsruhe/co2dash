@@ -88,7 +88,7 @@ export default {
                         if (!value2 || !isFinite(value2)) return "> " + String(value)
                         return String(value) + ' - ' + String(value2)
                     },
-                    text: ["",'[kg/Person]'],
+                    text: ["",'[CO2 t/Person]'],
                     // continous (default)
                     /*
                     min: -10,
