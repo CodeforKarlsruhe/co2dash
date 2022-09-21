@@ -48,11 +48,10 @@ export default {
                 showDelay: 0,
                 transitionDuration: 0.2,
                 formatter: function (params) {
-                    const value = (params.value + '').split('.');
-                    const valueStr = value[0].replace(
-                    /(\d{1,3})(?=(?:\d{3})+(?!\d))/g,
-                    '$1,'
-                    );
+                    //console.log("Geo:", params.value)
+                    const value = parseFloat(params.value).toFixed(2)
+                    const valueStr = String(value).replace(",","").replace(".",",")
+                    //console.log("Geo str:", value, " - ", valueStr)
                     return params.seriesName + '<br/>' + params.name + ': ' + valueStr;
                 },
                 position: [10, 10],
@@ -67,7 +66,9 @@ export default {
                         ['#ff0000', '#ff3300', '#ff6600', '#ff9900', '#ffcc00', '#ffff00', '#cce600', '#99cc00', '#66b300', '#339900']
                         //['#ff0000', '#cc0033', '#990066', '#660099', '#3300cc', '#0000ff', '#001acc', '#003399', '#004d66', '#006633']
                     },
-                    text: ['Viel', 'Wenig'],
+                    text: ['Viel', 'Wenig\n[kg/Person * 100]'],
+                    orient: "vertical",
+                    align: "left",
                     calculable: false,
                 },
                 toolbox: {
@@ -155,7 +156,11 @@ export default {
                     console.log("Data Loaded",data)
                     const mapData = []
                     data.forEach(x => {
-                        mapData.push({"name":x.name,"value":parseFloat(x.savingTotal)*100})
+                        let value = parseFloat(x.savingTotal)*100
+                        // limit 
+                        value = value > 10 ? 10 : value
+                        value = value < -10 ? -10 : value
+                        mapData.push({"name":x.name,"value":value})
                     })
                     this.option.series[0].data = mapData
                     this.dataLoaded = true
