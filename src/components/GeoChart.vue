@@ -49,7 +49,7 @@ export default {
                 transitionDuration: 0.2,
                 formatter: function (params) {
                     //console.log("Geo:", params.value)
-                    const value = parseFloat(params.value).toFixed(2)
+                    const value = parseFloat(params.value).toFixed(3)
                     const valueStr = String(value).replace(",","").replace(".",",")
                     //console.log("Geo str:", value, " - ", valueStr)
                     return params.seriesName + '<br/>' + params.name + ': ' + valueStr;
@@ -59,6 +59,38 @@ export default {
                 visualMap: {
                     left: 'left',
                     top:"center",
+                    // piecewise
+                    type: "piecewise",
+                    /*
+                    import seaborn as sns
+                    p = sns.color_palette("Greens",6)
+                    c = [f"#{int(255*x[0]):02x}{int(255*x[1]):02x}{int(255*x[2]):02x}" for x in p]
+                    ["#ff0000","#0000ff",'#e1f3db', '#bbe4b5', '#8ed08b', '#56b567', '#2b944b', '#04702f']
+                    ['#006829', '#1a833e', '#36a055', '#5cb86a', '#88cd86', '#addea7',
+                    */
+                    pieces: [
+                        // Range of a piece can be specified by property min and max,
+                        // where min will be set as -Infinity if ignored,
+                        // and max will be set as Infinity if ignored.
+                        {max: -.0001, color:"#ff4400"},
+                        {min: -.0001,max: .001, color:"#cccc44"},
+                        {min: .001,max: .01, color:"#addea7"},
+                        {min: .01,max: .05, color:"#88cd86"},
+                        {min: .05,max: .5, color:"#5cb86a"},
+                        {min: .5,max: 1, color:"#36a055"},
+                        {min: 1,max: 2, color:"#1a833e"},
+                        {min: 2, color:"#006829"},
+                    ],
+                    itemGap: 3,
+                    showLabel: true,
+                    formatter: function (value, value2) {
+                        if (!isFinite(value)) return "< " + String(value2)
+                        if (!value2 || !isFinite(value2)) return "> " + String(value)
+                        return String(value) + ' - ' + String(value2)
+                    },
+                    text: ["",'[kg/Person]'],
+                    // continous (default)
+                    /*
                     min: -10,
                     max: 10,
                     inRange: {
@@ -67,6 +99,7 @@ export default {
                         //['#ff0000', '#cc0033', '#990066', '#660099', '#3300cc', '#0000ff', '#001acc', '#003399', '#004d66', '#006633']
                     },
                     text: ['Viel', 'Wenig\n[kg/Person * 100]'],
+                    */
                     orient: "vertical",
                     align: "left",
                     calculable: false,
@@ -156,10 +189,11 @@ export default {
                     console.log("Data Loaded",data)
                     const mapData = []
                     data.forEach(x => {
-                        let value = parseFloat(x.savingTotal)*100
+                        //let value = parseFloat(x.savingTotal)*100
+                        let value = parseFloat(x.savingTotal)
                         // limit 
-                        value = value > 10 ? 10 : value
-                        value = value < -10 ? -10 : value
+                        value = value > 11 ? 11 : value
+                        value = value < -11 ? -11 : value
                         mapData.push({"name":x.name,"value":value})
                     })
                     this.option.series[0].data = mapData
