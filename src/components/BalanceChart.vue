@@ -254,7 +254,7 @@ export default {
         if (this.chart) {
           //console.log(this.chart)
           //console.log(this.chart.chart)
-          this.chart.chart.resize({height:Math.round(n/3)})
+          // this.chart.chart.resize({height:Math.round(n/3)})
         }
       },
       wwidth(n) {
@@ -262,7 +262,7 @@ export default {
         if (this.chart) {
           //console.log(this.chart)
           //console.log(this.chart.chart)
-          this.chart.chart.resize()
+          //this.chart.chart.resize()
         }
       }
     },
@@ -399,7 +399,7 @@ export default {
         this.timer = setInterval(this.readBalance, 5000)
     },
     mounted() {
-      this.wheight++ // trigger resize
+      //this.wheight++ // trigger resize
     },
     setup () {
         const chart = ref({})
